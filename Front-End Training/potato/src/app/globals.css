@@ -1,0 +1,106 @@
+body{
+  background-image: url('./bg.jpg');
+  background-size:cover;
+  background-position:center ;
+}
+.container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+.centered-container{
+  width: 90%;
+  height: 90vh;
+  background-color: rgb(255, 255, 255, 0.3);
+  border-radius: 70px;
+}
+.list{
+  display: flex;
+  margin-left: -30px;
+}
+li{
+  list-style: none;
+  display: inline-block;
+  margin-right: 40px;
+  
+}
+.header{
+  margin-top:40px ;
+  display: flex;
+  justify-content: space-between;
+}
+.logo-container{
+  display: flex;
+  margin-left: 100px;
+}
+.logo{
+  color: #F9C05F;
+  margin-left: 15px;
+  margin-top: 5px;
+}
+.user-icon{
+  margin-right: 100px;
+  margin-top: 5px;
+  cursor: pointer;
+
+}
+
+
+.info-container{
+  display: grid;
+  grid-template-columns: 70% 30%;
+}
+.message-btn{
+  margin-top: 100px;
+  margin-left:100px;
+  width: 70%;
+  height: 400px;
+}
+
+.upload{
+  cursor: pointer;
+  margin-top: 100px;
+  width: 300px;
+  height: 400px;
+  background-color: rgb(255, 255, 255, 0.7);
+  border-radius: 50px;
+  background-image: url('./upload.png');
+  background-size:60%;
+  background-position:center ;
+  background-repeat: no-repeat;
+  
+
+}
+.drag{
+  font-weight: bold;
+  text-align: center;
+  margin-top: 300px;
+  color: rgb(0, 0, 0, 0.8);
+}
+
+.text{
+  color: #096319;
+  font-size: 40px;
+}
+
+button{
+  width: 250px;
+  height: 70px;
+  border-radius: 30px;
+  stroke: none;
+  border: none;
+  background-color: #096319;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
