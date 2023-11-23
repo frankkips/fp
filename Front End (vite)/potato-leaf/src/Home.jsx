@@ -5,52 +5,40 @@ import { useState } from 'react'
 import {useCallback}  from 'react'
 import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
-// import { REACT_APP_API_URL } from '/.env'
+
 
 function Home() {
-  const [file, setFile] = useState();
-  const [data, setData] = useState();
-  const [preview, setPreview] = useState();
-  console.log(data);
-//   const fileName = file.name;
-  
-  
+    const [file, setFile] = useState();
+    const [data, setData] = useState();
+    const [preview, setPreview] = useState();
 
-
-  const sendFile = async () => {
+    const sendFile = async () => {
     if (file) {
         const reader = new FileReader();
-  
         reader.onload = async () => {
-          const formData = new FormData();
-          formData.append('file', file);
-          try {
-            const res = await axios.post('http://0.0.0.0:8000/predict', formData);
+        const formData = new FormData();
+        formData.append('file', file);
+        
+            let res = await axios({
+                method: "post",
+                url: 'http://0.0.0.0:8000/predict',
+                data: formData,
+                });
             if (res.status === 200) {
                 setData(res.data);
-              }
-    
-          } catch (error) {
-            console.error('Error uploading file: ', error);
-            setData("hello");
-          }
-        }
+            }
         reader.readAsDataURL(file);
+        }
     }
-}
-    
+    }
 // Drag and Drop Features
     const onDrop = useCallback(acceptedFiles => {
-        // Do something with the files
-        // const file = acceptedFiles[0];
-        console.log(acceptedFiles);
-        // setFile(URL.createObjectURL(acceptedFiles[0]))
         setFile(acceptedFiles[0])
         setPreview(URL.createObjectURL(acceptedFiles[0]))
         
 
-      }, [])
-      const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
+    }, [])
+    const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
 
 
 
@@ -86,7 +74,7 @@ function Home() {
                                 <p className='drag'>Drag and drop photos, or click to select files</p>
                             )
                             }
-                             {
+                            {
                             file && (
                             <img className='leaf-new'src={preview} />
                             )

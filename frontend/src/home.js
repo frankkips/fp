@@ -163,6 +163,7 @@ export const ImageUpload = () => {
       });
       if (res.status === 200) {
         setData(res.data);
+        console.log(data)
       }
       setIsloading(false);
     }
@@ -280,7 +281,7 @@ export const ImageUpload = () => {
               <ColorButton variant="contained" className={classes.clearButton} color="primary" component="span" size="large" onClick={clearData} startIcon={<Clear fontSize="large" />}>
                 Clear
               </ColorButton>
-              <p>Result: {JSON.stringify(selectedFile)}</p>
+              <p>Result: {JSON.stringify(data)}</p>
             </Grid>}
         </Grid >
       </Container >
