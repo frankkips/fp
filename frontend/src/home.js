@@ -158,7 +158,7 @@ export const ImageUpload = () => {
       formData.append("file", selectedFile);
       let res = await axios({
         method: "post",
-        url: process.env.REACT_APP_API_URL,
+        url: 'http://0.0.0.0:8000/predict',
         data: formData,
       });
       if (res.status === 200) {
@@ -280,6 +280,7 @@ export const ImageUpload = () => {
               <ColorButton variant="contained" className={classes.clearButton} color="primary" component="span" size="large" onClick={clearData} startIcon={<Clear fontSize="large" />}>
                 Clear
               </ColorButton>
+              <p>Result: {JSON.stringify(selectedFile)}</p>
             </Grid>}
         </Grid >
       </Container >

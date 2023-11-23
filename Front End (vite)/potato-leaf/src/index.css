@@ -1,4 +1,4 @@
-body{
+/* body{
   background-image: url('./bg.jpg');
   background-size:cover;
   background-position:center ;
@@ -9,10 +9,10 @@ body{
   width: 100%;
   height: 100vh;
   justify-content: center;
-  align-items: center;
+  align-items: center; */
   /* background-color: red; */
-}
-.centered-container{
+/* } */
+/* .centered-container{
   width: 100%;
   height: 90vh;
   background-color: rgb(255, 255, 255, 0.3);
@@ -20,12 +20,12 @@ body{
 }
 
 /* Header styles - logo , menu  and user icon */
-.header{
+/* .header{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; */
   /* background-color: red; */
-}
-.logo-container{
+/* } */
+/* .logo-container{
   display: flex;
   margin-left: 100px;
   margin-top: 30px;
@@ -34,15 +34,15 @@ body{
   color: #F9C05F;
   margin-left: 1px;
   height: fit-content;
-  margin-top: -40px;
-}
+  margin-top: -40px; */
+/* } */
 
-.list{
+/* .list{
   display: flex;
   margin-top: 50px;
   margin-right: 120px;
-}
-a{
+} */
+/* a{
   text-decoration: none;
   color: black;
   font-size: 16px;
@@ -54,8 +54,8 @@ li{
   margin-right: 40px;
   height: fit-content;
   
-}
-.user-icon{
+} */ 
+/* .user-icon{
   margin-right: 100px;
   margin-top: 40px;
   cursor: pointer;
@@ -67,6 +67,7 @@ li{
   margin-top: -90px;
   display: grid;
   grid-template-columns: 70% 30%;
+  background-color: royalblue;
 }
 .message-btn{
   margin-top: 100px;
@@ -114,7 +115,116 @@ button{
   text-align: center;
   margin-top: 300px;
   color: rgb(0, 0, 0, 0.8);
+} */
+
+
+
+/* The Result Page Styles */
+.result-div{
+  display: flex;
+  flex-direction: column;
+  /* background-color: bisque; */
+}
+.result-part{
+  background-color: rgba(0, 0, 0, 0.42);
+  border-radius: 50px;
+  margin-top: 50px;
+  padding-left: 40px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  flex: 70%;
+  display: flex;
+  align-items: flex-start;
+}
+
+.btn-div{
+  /* background-color: blue; */
+  flex: 30%;
+  margin-left: 50px;
+}
+.result-text{
+  color: #F9C05F;
+  font-size: 48px;
+  font-weight: bold;
+  /* background-color: red; */
+}
+.percent{
+  font-size: 96px;
+  /* background-color: blue; */
+  margin-left: 285px;
+  color: white;
+  font-weight: bold;
+}
+.confidence{
+  color: white;
+  margin-left: 300px;
+  font-size: 40px;
+  font-weight: bold;
+  /* background-color: green; */
+}
+.asured{
+  /* background-color: green; */
+  display: flex;
+  flex-direction: column; /* Stack items vertically */
+}
+.asured h1{
+  margin-bottom: 5px;
+  margin-top: 10px;
+}
+.leaf{
+  cursor: pointer;
+  margin-top: 50px;
+  width: 300px;
+  height: 400px;
+  background-color: rgb(255, 255, 255, 0.7);
+  border-radius: 50px;
+  background-image: url('./example.JPG');
+  background-size:cover;
+  background-position:center ;
+  background-repeat: no-repeat;
+}
+.leaf-new{
+  cursor: pointer;
+  margin-top: 0px;
+  width: 300px;
+  height: 400px;
+  /* background-color: rgb(255, 255, 255, 0.7); */
+  border-radius: 50px;
+  /* background-image: url('./example.JPG'); */
+  background-size:cover;
+  background-position:center ;
+  background-repeat: no-repeat;
 }
 
 
+/* Reccomend Part */
+.recomend-text{
+  color: #F9C05F;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px;
+  margin-top: 30px;
+}
 
+
+.recomend-part{
+  background-color: rgba(0, 0, 0, 0.42);
+  border-radius: 50px;
+  margin-top: 50px;
+  padding-left: 40px;
+  margin-right: 50px;
+  margin-left: 50px;
+  margin-bottom: 50px;
+  height: 400px;
+}
+
+.reco-list{
+  list-style:circle;
+}
+
+.reco-list li{
+  color: white;
+  font-size: 20px;
+  margin-bottom: 20px;
+}

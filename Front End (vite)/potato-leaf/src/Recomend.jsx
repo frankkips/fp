@@ -2,10 +2,10 @@ import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
 
+function Reccomend(){
 
-function Result(){
     return(
-       <>
+        <>
         <div className='container'>
             <div className='centered-container'>
                 <div className='header'>
@@ -20,22 +20,24 @@ function Result(){
                         </ul>
                     <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
+
+
                 <div className='info-container'>
                     <div className='result-div'>
-                        <div className='result-part'>
-                            <h1 className='result-text'>Early Blight <br/>Disease</h1>
-                            <div className='asured'>
-                                <h1 className='percent'>100%</h1>
-                                <h1 className='confidence'>Confidence</h1>
-                            </div>
-                        </div>
-                        <div className='btn-div'>
-                            <button>Suggestions</button>
+                        <div className='recomend-part'>
+                            <h1 className='recomend-text'>Reccomendations</h1>
+                            <ul className='reco-list'>
+                                <li>Remove Infected Leaves</li>
+                                <li>Use Copper-based fungicides</li>
+                                <li>Proper Irrigation</li>
+                                <li>Crop Rotation</li>
+                                <li>proper plant spacing and pruning</li>
+
+                            </ul>
+                            
                         </div>
                     </div>
                     <div className='leaf'>
-                        
-
                     </div>
                     
                 </div>
@@ -43,6 +45,7 @@ function Result(){
             </div>
         </div>
        </>
-    )
+    );
 }
-export default Result;
+
+export default Reccomend;
