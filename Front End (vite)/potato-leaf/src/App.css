@@ -26,6 +26,16 @@ body{
   margin-right: 40px;
   
 }
+.list a{
+  color: rgb(255, 255, 255);
+  list-style: none;
+  display: inline-block;
+  margin-right: 40px;
+  
+}
+a{
+  color: white;
+}
 .header{
   margin-top:40px ;
   display: flex;

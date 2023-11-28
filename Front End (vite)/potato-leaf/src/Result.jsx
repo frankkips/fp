@@ -1,3 +1,5 @@
+// No longer need to use this file
+
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
@@ -5,7 +7,7 @@ import './App.css'
 
 function Result(){
     return(
-       <>
+        <>
         <div className='container'>
             <div className='centered-container'>
                 <div className='header'>
@@ -42,7 +44,7 @@ function Result(){
             
             </div>
         </div>
-       </>
+        </>
     )
 }
 export default Result;

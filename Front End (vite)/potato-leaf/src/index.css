@@ -1,129 +1,7 @@
-/* body{
-  background-image: url('./bg.jpg');
-  background-size:cover;
-  background-position:center ;
-  justify-content: center;
-  background-repeat: no-repeat;
-}
-.container {
-  width: 100%;
-  height: 100vh;
-  justify-content: center;
-  align-items: center; */
-  /* background-color: red; */
-/* } */
-/* .centered-container{
-  width: 100%;
-  height: 90vh;
-  background-color: rgb(255, 255, 255, 0.3);
-  border-radius: 70px;
-}
-
-/* Header styles - logo , menu  and user icon */
-/* .header{
-  display: flex;
-  justify-content: space-between; */
-  /* background-color: red; */
-/* } */
-/* .logo-container{
-  display: flex;
-  margin-left: 100px;
-  margin-top: 30px;
-}
-.logo{
-  color: #F9C05F;
-  margin-left: 1px;
-  height: fit-content;
-  margin-top: -40px; */
-/* } */
-
-/* .list{
-  display: flex;
-  margin-top: 50px;
-  margin-right: 120px;
-} */
-/* a{
-  text-decoration: none;
-  color: black;
-  font-size: 16px;
-  font-weight: bold;
-}
-li{
-  list-style: none;
-  display: inline-block;
-  margin-right: 40px;
-  height: fit-content;
-  
-} */ 
-/* .user-icon{
-  margin-right: 100px;
-  margin-top: 40px;
-  cursor: pointer;
-
-}
-
-
-.info-container{
-  margin-top: -90px;
-  display: grid;
-  grid-template-columns: 70% 30%;
-  background-color: royalblue;
-}
-.message-btn{
-  margin-top: 100px;
-  margin-left:100px;
-  width: 70%;
-  height: 400px;
-}
-.text{
-  color: #096319;
-  font-size: 40px;
-  text-align: left;
-}
-
-button{
-  width: 250px;
-  height: 70px;
-  border-radius: 30px;
-  stroke: none;
-  border: none;
-  background-color: #096319;
-  color: white;
-  font-size: 32px;
-  cursor: pointer;
-  margin-left: -370px;
-
-}
-
-
-.upload{
-  cursor: pointer;
-  margin-top: 100px;
-  width: 300px;
-  height: 400px;
-  background-color: rgb(255, 255, 255, 0.7);
-  border-radius: 50px;
-  background-image: url('./upload.png');
-  background-size:60%;
-  background-position:center ;
-  background-repeat: no-repeat;
-  
-
-}
-.drag{
-  font-weight: bold;
-  text-align: center;
-  margin-top: 300px;
-  color: rgb(0, 0, 0, 0.8);
-} */
-
-
-
 /* The Result Page Styles */
 .result-div{
   display: flex;
   flex-direction: column;
-  /* background-color: bisque; */
 }
 .result-part{
   background-color: rgba(0, 0, 0, 0.42);
@@ -139,19 +17,17 @@ button{
 }
 
 .btn-div{
-  /* background-color: blue; */
   flex: 30%;
   margin-left: 50px;
 }
 .result-text{
   color: #F9C05F;
-  font-size: 48px;
+  font-size: 70px;
   font-weight: bold;
-  /* background-color: red; */
 }
 .percent{
+  margin-top: 30px;
   font-size: 96px;
-  /* background-color: blue; */
   margin-left: 285px;
   color: white;
   font-weight: bold;
@@ -159,18 +35,16 @@ button{
 .confidence{
   color: white;
   margin-left: 300px;
-  font-size: 40px;
+  font-size: 60px;
   font-weight: bold;
-  /* background-color: green; */
 }
 .asured{
-  /* background-color: green; */
   display: flex;
-  flex-direction: column; /* Stack items vertically */
+  flex-direction: column;
 }
 .asured h1{
   margin-bottom: 5px;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 .leaf{
   cursor: pointer;
@@ -189,9 +63,7 @@ button{
   margin-top: 0px;
   width: 300px;
   height: 400px;
-  /* background-color: rgb(255, 255, 255, 0.7); */
   border-radius: 50px;
-  /* background-image: url('./example.JPG'); */
   background-size:cover;
   background-position:center ;
   background-repeat: no-repeat;
