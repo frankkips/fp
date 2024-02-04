@@ -16,11 +16,19 @@
   align-items: flex-start;
 }
 
+.tips-btn{
+  background-color: #028302;
+}
+.text-div{
+  display: block;
+}
+
 .btn-div{
   flex: 30%;
   margin-left: 50px;
 }
 .result-text{
+  /* background-color: red; */
   color: #F9C05F;
   font-size: 70px;
   font-weight: bold;
@@ -39,6 +47,7 @@
   font-weight: bold;
 }
 .asured{
+  /* background-color: blue; */
   display: flex;
   flex-direction: column;
 }

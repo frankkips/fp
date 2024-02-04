@@ -6,6 +6,7 @@ import {useCallback}  from 'react'
 import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
 import ResultComponent from './ResultComponent'
+// import ReccomendComponent from './RecomendComponent'
 
 
 function Home() {

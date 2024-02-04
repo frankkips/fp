@@ -32,7 +32,6 @@ function Reccomend(){
                                 <li>Proper Irrigation</li>
                                 <li>Crop Rotation</li>
                                 <li>proper plant spacing and pruning</li>
-
                             </ul>
                             
                         </div>
@@ -44,7 +43,7 @@ function Reccomend(){
             
             </div>
         </div>
-       </>
+    </>
     );
 }
 

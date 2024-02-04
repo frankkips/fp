@@ -1,20 +1,36 @@
-
+import ReccomendComponent from './RecomendComponent'
+import { useState } from 'react';
 import './App.css'
 import PropTypes from 'prop-types';
 
 const ResultComponent = ({ data }) => {
+    const [showRecommendations, setShowRecommendations] = useState(false);
+    const handleButtonClick = () => {
+        setShowRecommendations(true);
+    };
+
     const disease = data.class;
     let confidence = data.confidence;
     confidence = (parseFloat(data.confidence) * 100).toFixed(2);
 
     return (
-    <div className='result-part'>
-        <h1 className='result-text'>{disease}</h1>
-        <div className='asured'>
-        <h1 className='percent'>{confidence}%</h1>
-        <h1 className='confidence'>Confidence</h1>
-    </div>
-    </div>
+        <>
+        {showRecommendations ? (<ReccomendComponent/>
+        ) : (
+            <div className='result-part'>
+            <div className="text-div">
+                <h1 className='result-text'>{disease}</h1>
+                <button className='tips-btn' onClick= {handleButtonClick}>Tips</button>
+            </div>
+            <div className='asured'>
+                <h1 className='percent'>{confidence}%</h1>
+                <h1 className='confidence'>Confidence</h1>
+            </div>
+        </div>
+
+        )}
+    
+    </>
     );
 };
 
