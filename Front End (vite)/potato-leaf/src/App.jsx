@@ -1,14 +1,16 @@
 // import { useState } from 'react'
-import Home from './Home'
+// import Home from './Home'
 // import Reccomend from './Recomend'
 // import Reccomend from './Recomend'
+import Chatgpt from './Chatgpt'
 // import Result from './Result'
 
 
 function App() {
 
   return (
-    <Home/>
+    <Chatgpt/>
+    // <Home/>
     // <Reccomend/>
   )
 }
