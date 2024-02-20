@@ -6,6 +6,9 @@ import {useCallback}  from 'react'
 import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
 import ResultComponent from './ResultComponent'
+import { Link,  } from 'react-router-dom'
+// import ChatgptComponent from './ChatgptComponent'
+// import Chatgpt from './Chatgpt'
 // import ReccomendComponent from './RecomendComponent'
 
 
@@ -60,11 +63,12 @@ function Home() {
                     <div className='logo-container'>
                         <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
                         <h1 className='logo'>Mkulima</h1>
+                    
                     </div>
                         <ul className='list'>
-                            <li><a href='#'>Home</a></li>
-                            <li><a href='#'>Learn</a></li>
-                            <li><a href='#'>Reccomend</a></li>
+                            <li><Link to="/">Home</Link></li>
+                            <li><Link to="/chat">Chat</Link></li>
+                            <li><Link to="/learn">Learn</Link></li>
                         </ul>
                     <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>

@@ -154,3 +154,38 @@ a{
   width:900px;
   padding-top: 40px;
 }
+
+/* 404 Error */
+.err{
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 50px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50px;
+  margin-left: 100px;
+  margin-right: 100px;
+  margin-top: 100px;
+}
+
+.return{
+  margin-top: 50px;
+  margin-left: 80px;
+  width: 250px;
+  height: 70px;
+  border-radius: 30px;
+  stroke: none;
+  border: none;
+  background-color: #096319;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

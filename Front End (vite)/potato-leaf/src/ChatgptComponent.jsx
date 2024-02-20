@@ -1,15 +1,13 @@
-// import axios from 'axios'
 import { useState } from 'react'
-import userIcon from '/user-icon.png'
-import tractorIcon from '/vector.png'
-import { Link } from 'react-router-dom'
 import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
 
 const API_KEY = "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"
 
-function Chatgpt(){
+function ChatgptComponent(){
+
+
     const [typing , setTyping] = useState(false);
     const [messages, setMessages] = useState([
         {
@@ -78,54 +76,30 @@ async function getChatGPTResponse(chatMessage){
         ])
         setTyping(false);
     })
-
 }
 
     return(
         <>
-        <div className='container'>
-            <div className='centered-container'>
-                <div className='header'>
-                    <div className='logo-container'>
-                        <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
-                        <h1 className='logo'>Mkulima</h1>
-                    </div>
-                        <ul className='list'>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/chat">Chat</Link></li>
-                            <li><Link to="/learn">Learn</Link></li>
-                        </ul>
-                    <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
-                </div>
-                <div className='info-container'>
-                    <div className='result-div'>
-                        <div className='gpt-part'>
-                            <MainContainer className='main-chat'>
-                                <ChatContainer>
-                                    <MessageList
-                                        scrollBehavior='smooth'
-                                        typingIndicator={typing ? <TypingIndicator content='ChatGPT is typing...' /> : null}
-                                    >
-                                        {messages.map((message, i) => {
-                                            return <Message key={i} model={message}/>
-                                        })}
-                                    </MessageList>
-                                    <MessageInput placeholder='Type your message' onSend={handleSend}/>
-                                </ChatContainer>
-                            </MainContainer>
+            <div className='result-div'>
+                <div className='gpt-part'>
+                    <MainContainer className='main-chat'>
+                        <ChatContainer>
+                            <MessageList
+                                scrollBehavior='smooth'
+                                typingIndicator={typing ? <TypingIndicator content='ChatGPT is typing...' /> : null}
+                                >
+                                {messages.map((message, i) => {
+                                    return <Message key={i} model={message}/>
+                                    })}
+                            </MessageList>
+                            <MessageInput placeholder='Type your message' onSend={handleSend}/>
+                        </ChatContainer>
+                    </MainContainer>
                         
-                        </div>
-                    </div>
-                    <div className='leaf'>
-                        
-
-                    </div>
-                    
                 </div>
-            
             </div>
-        </div>
         </>
     )
 }
-export default Chatgpt;
+
+export default ChatgptComponent;

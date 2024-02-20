@@ -20,7 +20,7 @@ const ResultComponent = ({ data }) => {
             <div className='result-part'>
             <div className="text-div">
                 <h1 className='result-text'>{disease}</h1>
-                <button className='tips-btn' onClick= {handleButtonClick}>Tips</button>
+                <button className='tips-btn' onClick= {handleButtonClick}>Suggestions</button>
             </div>
             <div className='asured'>
                 <h1 className='percent'>{confidence}%</h1>
