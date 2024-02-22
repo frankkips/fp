@@ -68,6 +68,18 @@
   background-position:center ;
   background-repeat: no-repeat;
 }
+.leaf-late{
+  cursor: pointer;
+  margin-top: 50px;
+  width: 300px;
+  height: 400px;
+  background-color: rgb(255, 255, 255, 0.7);
+  border-radius: 50px;
+  background-image: url('./Late.JPG');
+  background-size:cover;
+  background-position:center ;
+  background-repeat: no-repeat;
+}
 .leaf-new{
   cursor: pointer;
   margin-top: 0px;
@@ -77,6 +89,19 @@
   background-size:cover;
   background-position:center ;
   background-repeat: no-repeat;
+}
+.leaf-learn{
+  cursor: pointer;
+  margin-top: 50px;
+  width: 300px;
+  height: 400px;
+  background-color: rgb(255, 255, 255, 0.7);
+  border-radius: 50px;
+  background-image: url('./Early.JPG');
+  background-size:cover;
+  background-position:center ;
+  background-repeat: no-repeat;
+  margin-left: 50px;
 }
 
 
@@ -145,8 +170,16 @@
   grid-template-columns: 70% 30%;
   padding-bottom: 100px;
   margin-bottom: -90px;
+  margin-top: -30px;
   /* background-color: aquamarine; */
 
+}
+.learn-info-container-two{
+  display: grid;
+  grid-template-columns: 30% 70%;
+  padding-bottom: 100px;
+  margin-bottom: -90px;
+  margin-top: -30px;
 }
 .learn-part{
   background-color: rgba(0, 0, 0, 0.42);
@@ -155,6 +188,16 @@
   padding-left: 40px;
   margin-right: 50px;
   margin-left: 50px;
+  margin-bottom: 50px;
+  height: 400px;
+}
+.learn-part-op{
+  background-color: rgba(0, 0, 0, 0.42);
+  border-radius: 50px;
+  margin-top: 50px;
+  padding-left: 40px;
+  margin-right: 123px;
+  margin-left: -10px;
   margin-bottom: 50px;
   height: 400px;
 }
@@ -170,8 +213,26 @@
 }
 
 .disc{
+  font-family:  'Roboto', sans-serif;
   color: white;
-  font-size: 30px;
+  font-size: 27px;
   margin-top: 20px;
   margin-right: 20px;
+}
+
+.learn-btn{
+  margin-left: 50px;
+  width: 250px;
+  height: 70px;
+  border-radius: 30px;
+  stroke: none;
+  border: none;
+  background-color: #096319;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
