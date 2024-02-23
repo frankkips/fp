@@ -101,7 +101,7 @@ async function getChatGPTResponse(chatMessage){
                     <div className='result-div'>
                         <div className='gpt-part'>
                             <MainContainer className='main-chat'>
-                                <ChatContainer>
+                                <ChatContainer className='chat-container'>
                                     <MessageList
                                         scrollBehavior='smooth'
                                         typingIndicator={typing ? <TypingIndicator content='ChatGPT is typing...' /> : null}

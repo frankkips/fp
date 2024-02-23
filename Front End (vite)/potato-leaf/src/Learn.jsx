@@ -1,4 +1,5 @@
 import './App.css'
+import './index.css'
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import { Link } from 'react-router-dom'

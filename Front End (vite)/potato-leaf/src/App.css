@@ -103,6 +103,7 @@ a{
 .text{
   color: #096319;
   font-size: 40px;
+  font-family: sans-serif;
 }
 
 button{
@@ -137,23 +138,20 @@ a{
 }
 .gpt-part{
   height: 500px;
-  /* background-color: rgba(0, 0, 0, 0.42); */
   border-radius: 50px;
   margin-top: 50px;
-  /* padding-left: 40px; */
   margin-right: 50px;
   margin-left: 50px;
   margin-bottom: -100px;
-  /* flex: 70%; */
-  /* display: flex; */
-  /* align-items: flex-start; */
 }
 
 .main-chat{
   border-radius: 20px;
   width:900px;
   padding-top: 40px;
+  
 }
+
 
 /* 404 Error */
 .err{

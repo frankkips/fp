@@ -155,9 +155,10 @@
 }
 
 .learn-text{
-  margin-left: 550px;
-  color: #096319;
+  margin-left: 530px;
+  color: #F9C05F;
   font-size: 40px;
+  font-family: sans-serif;
 }
 
 .wrapper{
@@ -210,10 +211,11 @@
 
 .healthy{
   color: #F9C05F;
+  font-family: sans-serif;
 }
 
 .disc{
-  font-family:  'Roboto', sans-serif;
+  font-family:  sans-serif;
   color: white;
   font-size: 27px;
   margin-top: 20px;
@@ -230,6 +232,8 @@
   background-color: #096319;
   color: white;
   font-size: 32px;
+  font-weight: lighter;
+  font-family: sans-serif;
   cursor: pointer;
   margin-bottom: 50px;
   display: flex;
