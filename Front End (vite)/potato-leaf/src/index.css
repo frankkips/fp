@@ -18,7 +18,7 @@
 }
 
 .tips-btn{
-  background-color: #028302;
+  background-color: #096319;
 }
 .text-div{
   display: block;
@@ -224,6 +224,25 @@
 
 .learn-btn{
   margin-left: 50px;
+  width: 250px;
+  height: 70px;
+  border-radius: 30px;
+  stroke: none;
+  border: none;
+  background-color: #096319;
+  color: white;
+  font-size: 32px;
+  font-weight: lighter;
+  font-family: sans-serif;
+  cursor: pointer;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rec-btn{
+  margin-left: 20px;
   width: 250px;
   height: 70px;
   border-radius: 30px;

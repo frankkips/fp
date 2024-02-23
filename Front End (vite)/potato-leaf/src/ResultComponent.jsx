@@ -15,7 +15,7 @@ const ResultComponent = ({ data }) => {
 
     return (
         <>
-        {showRecommendations ? (<ReccomendComponent/>
+        {showRecommendations ? (<ReccomendComponent data={data}/>
         ) : (
             <div className='result-part'>
             <div className="text-div">
