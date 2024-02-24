@@ -7,6 +7,7 @@ import Learn from './Learn'
 // import Result from './Result'
 import './App.css'
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
+import UserProfile from './UserProfile'
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
   {
     path: '/learn',
     element: <Learn/>,
+  },
+  {
+    path: '/user',
+    element: <UserProfile/>,
   },
   ])
 

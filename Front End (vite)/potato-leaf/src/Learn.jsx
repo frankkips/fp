@@ -23,7 +23,9 @@ function Learn() {
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
-                    <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
+                    <Link to='/user' className='user-link'>
+                        <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
+                    </Link>
                 </div>
                 <div className="learn-title">
                     <h1 className='learn-text'>Potato Leaf Diseases</h1>
