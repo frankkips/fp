@@ -7,7 +7,8 @@ import Learn from './Learn'
 // import Result from './Result'
 import './App.css'
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
-import UserProfile from './UserProfile'
+// import UserProfile from './UserProfile'
+import UserLogin from './UserLogin'
 
 
 function App() {
@@ -29,7 +30,7 @@ function App() {
   },
   {
     path: '/user',
-    element: <UserProfile/>,
+    element: <UserLogin/>,
   },
   ])
 
