@@ -8,7 +8,8 @@ import Learn from './Learn'
 import './App.css'
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
 // import UserProfile from './UserProfile'
-import UserLogin from './UserLogin'
+// import UserLogin from './UserLogin'
+import UserHistory from './UserHistory'
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
   },
   {
     path: '/user',
-    element: <UserLogin/>,
+    element: <UserHistory/>,
   },
   ])
 

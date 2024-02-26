@@ -6,10 +6,8 @@ import {useCallback}  from 'react'
 import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
 import ResultComponent from './ResultComponent'
-import { Link,  } from 'react-router-dom'
-// import ChatgptComponent from './ChatgptComponent'
-// import Chatgpt from './Chatgpt'
-// import ReccomendComponent from './RecomendComponent'
+import { Link } from 'react-router-dom'
+
 
 
 function Home() {

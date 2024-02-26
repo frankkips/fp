@@ -385,3 +385,105 @@
   margin-left: 55px;
   border-radius: 10px;
 }
+
+/* --------------------------------------------------------------------------------------------------------------------- */
+/* User History Part */
+.hist-divider{
+  display: grid;
+  grid-template-columns: 60% 40%;
+  /* background-color: aquamarine; */
+}
+.hist-container{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* background-color: green; */
+}
+.hist-cont{
+  display: flex;
+  width: 400px;
+  height: 190px;
+  background-color: rgba(0, 0, 0, 0.42);
+  border-radius: 50px;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.hist-img{
+  border-radius: 30px;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.hist-cont h1{
+  color: #F9C05F;
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.hist-cont h2{
+  color:white;
+  margin-left: 20px;
+  margin-top: -10px;
+}
+.hist-cont p{
+  color: white;
+  margin-left: 20px;
+
+}
+.common h2{
+  margin-top: 20px;
+  margin-left: 30px;
+}
+.common h1{
+  margin-left: 60px;
+}
+.cal-cont .hist-cont{
+  width: 300px;
+}
+/* ------------------------------ */
+/* calenda part */
+.hist-cal{
+  width: 300px;
+  height: 250px;
+  background-color: rgba(0, 0, 0, 0.42);
+  border-radius: 50px;
+  margin-left: 100px;
+  margin-top: 50px;
+}
+.grid{
+  width: 300px;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.grid .l-a{
+  grid-column: span 2;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: white;
+}
+.grid .m{
+  grid-column: span 3;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: white;
+
+}
+.grid .r-a{
+  grid-column: span 2;
+  font-size: 20px;
+  font-family: sans-serif;
+  color: white;
+}
+.cal{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  color: white;
+}
+.day{
+  font-size: 15px;
+  font-weight: bold;
+  font-family: sans-serif;
+  color: white;
+}
