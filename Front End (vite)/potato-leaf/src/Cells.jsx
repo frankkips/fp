@@ -1,18 +1,19 @@
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
-const Cells = ({ className,children }) => {
-
+const Cells = ({ onclick,className,children }) => {
+    
 
 
 
 
 
     Cells.propTypes = {
-        className: PropTypes.string,
-        children: PropTypes.node,
+        onclick: PropTypes.any,
+        className: PropTypes.any,
+        children: PropTypes.any,
     };
-    return <div className={clsx("cal",className)}>{children}</div>;
+    return <div onClick={onclick} className={clsx("cal",className)}>{children}</div>;
     
 };
 

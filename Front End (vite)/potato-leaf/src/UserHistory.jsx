@@ -1,13 +1,31 @@
+// import React from 'react'
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
 import leafIcon from '/Early.jpg'
 import Cells from './Cells'
+import PropTypes from 'prop-types';
+import { differenceInDays, endOfMonth, startOfMonth, sub } from 'date-fns';
 
-function UserHistory(){
+
+const UserHistory =  (value = new Date, onChange) => {
+
+    const startDate = startOfMonth(value.value)
+    const endDate = endOfMonth(value.value)
+    const numDays = differenceInDays(endDate, startDate) + 1
+
+    const prefixDays = startDate.getDay();
+
+    const prevMonth = () => onChange(sub(value.value, {months: 1}));
 
     const daysOfWeek= ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    UserHistory.propTypes = {
+        value: PropTypes.any,
+        onChange: PropTypes.any,
+    };
+
     return (
         <>
             <div className='container'>
@@ -70,42 +88,20 @@ function UserHistory(){
                     </div>
                     <div className='hist-cal'>
                             <div className="grid">
-                                <Cells className='l-a'>{"<"}</Cells>
+                                <Cells onClick={prevMonth} className='l-a'>{"<"}</Cells>
                                 <Cells className='m'>Feb 2022</Cells>
                                 <Cells className='r-a'>{">"}</Cells>
                                 {daysOfWeek.map((day) => (<Cells key={day} className='day'>{day}</Cells>))}
-                                <Cells></Cells>
-                                <Cells>1</Cells>
-                                <Cells>2</Cells>
-                                <Cells>3</Cells>
-                                <Cells>4</Cells>
-                                <Cells>5</Cells>
-                                <Cells>6</Cells>
-                                <Cells>7</Cells>
-                                <Cells>8</Cells>
-                                <Cells>9</Cells>
-                                <Cells>10</Cells>
-                                <Cells>11</Cells>
-                                <Cells>12</Cells>
-                                <Cells>13</Cells>
-                                <Cells>14</Cells>
-                                <Cells>15</Cells>
-                                <Cells>16</Cells>
-                                <Cells>17</Cells>
-                                <Cells>18</Cells>
-                                <Cells>19</Cells>
-                                <Cells>20</Cells>
-                                <Cells>21</Cells>
-                                <Cells>22</Cells>
-                                <Cells>23</Cells>
-                                <Cells>24</Cells>
-                                <Cells>25</Cells>
-                                <Cells>26</Cells>
-                                <Cells>27</Cells>
-                                <Cells>28</Cells>
-                                <Cells>29</Cells>
-                                <Cells>30</Cells>
-                                <Cells>31</Cells>
+
+                                {Array.from({length: prefixDays}).map((_,index) => {
+                                    return <Cells key={index}/>
+                                })}
+
+                                {Array.from({length: numDays}).map((_,index) => {
+                                    const date = index + 1;
+                                    return <Cells key={date}>{date}</Cells>
+                                    })
+                                }
                             </div>
                     </div>
                 </div>
@@ -114,5 +110,5 @@ function UserHistory(){
         </div>
         </>
     )
-}
+};
 export default UserHistory;

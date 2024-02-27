@@ -1,4 +1,4 @@
-// import { useState } from 'react'
+import { useState } from 'react'
 import Home from './Home'
 // import Reccomend from './Recomend'
 // import Reccomend from './Recomend'
@@ -14,7 +14,7 @@ import UserHistory from './UserHistory'
 
 function App() {
 
-  
+  const [currentDate , setCurrentDate] = useState(new Date())
 
   const router = createBrowserRouter([{
     path: '/',
@@ -31,7 +31,7 @@ function App() {
   },
   {
     path: '/user',
-    element: <UserHistory/>,
+    element: <UserHistory value={currentDate} onChange={setCurrentDate}/>,
   },
   ])
 
