@@ -1,30 +1,35 @@
-// import React from 'react'
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
 import leafIcon from '/Early.jpg'
 import Cells from './Cells'
-import PropTypes from 'prop-types';
-import { differenceInDays, endOfMonth, startOfMonth, sub } from 'date-fns';
+import { differenceInDays, endOfMonth, startOfMonth, sub, add, format } from 'date-fns';
+import { useState } from 'react'
 
 
-const UserHistory =  (value = new Date, onChange) => {
 
-    const startDate = startOfMonth(value.value)
-    const endDate = endOfMonth(value.value)
+const UserHistory =  () => {
+
+    const [value , setCurrentDate] = useState(new Date())
+
+    const startDate = startOfMonth(value)
+    const endDate = endOfMonth(value)
     const numDays = differenceInDays(endDate, startDate) + 1
 
     const prefixDays = startDate.getDay();
 
-    const prevMonth = () => onChange(sub(value.value, {months: 1}));
+    const prevMonth = () => setCurrentDate(sub(value, {months: 1}));
+    const nextMonth = () => setCurrentDate(add(value,{months: 1}))
+
+    // const handleClickDate = (index) => {
+    //     const date = setDate(index)
+    //     setCurrentDate(date)
+    // }
 
     const daysOfWeek= ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
-    UserHistory.propTypes = {
-        value: PropTypes.any,
-        onChange: PropTypes.any,
-    };
+    
 
     return (
         <>
@@ -89,8 +94,8 @@ const UserHistory =  (value = new Date, onChange) => {
                     <div className='hist-cal'>
                             <div className="grid">
                                 <Cells onClick={prevMonth} className='l-a'>{"<"}</Cells>
-                                <Cells className='m'>Feb 2022</Cells>
-                                <Cells className='r-a'>{">"}</Cells>
+                                <Cells className='m'>{format(value, "LLL yyyy")}</Cells>
+                                <Cells onClick={nextMonth} className='r-a'>{">"}</Cells>
                                 {daysOfWeek.map((day) => (<Cells key={day} className='day'>{day}</Cells>))}
 
                                 {Array.from({length: prefixDays}).map((_,index) => {
@@ -111,4 +116,5 @@ const UserHistory =  (value = new Date, onChange) => {
         </>
     )
 };
+
 export default UserHistory;
