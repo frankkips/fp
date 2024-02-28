@@ -83,6 +83,22 @@ const UserHistory =  () => {
                             <p>27 Feb 2024</p>
                         </div>
                     </div>
+                    <div className='hist-cont'>
+                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
+                        <div>
+                            <h1>Early Blight Disease</h1>
+                            <h2>100%</h2>
+                            <p>27 Feb 2024</p>
+                        </div>
+                    </div>
+                    <div className='hist-cont'>
+                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
+                        <div>
+                            <h1>Early Blight Disease</h1>
+                            <h2>100%</h2>
+                            <p>27 Feb 2024</p>
+                        </div>
+                    </div>
                 </div>
                 <div className="cal-cont">
                     <div className='hist-cont'>
