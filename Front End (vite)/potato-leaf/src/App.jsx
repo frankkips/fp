@@ -1,14 +1,10 @@
-// import { useState } from 'react'
 import Home from './Home'
-// import Reccomend from './Recomend'
-// import Reccomend from './Recomend'
 import Chatgpt from './Chatgpt'
 import Learn from './Learn'
-// import Result from './Result'
 import './App.css'
 import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
-// import UserProfile from './UserProfile'
-// import UserLogin from './UserLogin'
+import UserProfile from './UserProfile'
+import UserLogin from './UserLogin'
 import UserHistory from './UserHistory'
 
 
@@ -30,8 +26,16 @@ function App() {
   },
   {
     path: '/user',
-    element: <UserHistory/>,
+    element: <UserProfile/>,
   },
+  {
+    path: 'user/history',
+    element: <UserHistory/>,
+    },
+    {
+      path: 'user/login',
+      element: <UserLogin/>,
+    },
   ])
 
   return (
