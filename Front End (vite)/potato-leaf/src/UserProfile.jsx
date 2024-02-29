@@ -1,15 +1,24 @@
 import userIcon from '/user-icon.png'
+// import { useState } from 'react'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
+// import UserHistory from './UserHistory';
+
 
 
 function UserProfile() {
 
+    const clickProfile = () => {
+        window.location.href = '/user/edit-profile';
+    }
+    const handleClick = () => {
+        window.location.href = '/user/history';
+    };
 
     return (
         <>
-            <div className='container'>
+        <div className='container'>
             <div className='centered-container'>
                 <div className='header'>
                     <div className='logo-container'>
@@ -37,13 +46,13 @@ function UserProfile() {
                             <h1 className='profile-name'>frankkips</h1>
                             <p className='profile-info'>franklinekiplagat1@gmail.com</p>
                             <p className='profile-info'>Londiani</p>
-                            <button>Edit Profile</button>
+                            <button onClick={clickProfile}>Edit Profile</button>
                         </div>
                     </div>
                     <div className='scans'>
                         <h1 className='scans-count'>6</h1>
                         <p className='scan-info'>Scans Done So Far</p>
-                        <button>Your History</button>
+                        <button onClick={handleClick}>Your History</button>
                     </div>
                 </div>
             

@@ -504,3 +504,53 @@
 ::-webkit-scrollbar {
   display: none;
 }
+/* ----------------------------------------------------------------------------------------------------- */
+/* Edit Profile Part */
+.profile-div{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  /* background-color: red; */
+}
+.profile-div .login{
+  margin-left: 240px;
+}
+.profile-upload{
+  display: flex;
+  width: 300px;
+  height: 300px;
+  /* background-color: green; */
+}
+.p-upload{
+  cursor: pointer;
+  margin-top: 50px;
+  width: 300px;
+  height: 300px;
+  background-color: rgb(255, 255, 255, 0.7);
+  border-radius: 50px;
+  background-image: url('./upload.png');
+  background-size:60%;
+  background-position:center ;
+  background-repeat: no-repeat;
+  margin-left: 70px;
+}
+.profile-leaf{
+  cursor: pointer;
+  margin-top: 0px;
+  width: 300px;
+  height: 300px;
+  border-radius: 50px;
+  background-size:cover;
+  background-position:center ;
+  background-repeat: no-repeat;
+}
+.p-upload p{
+  height: 250px;
+  width: 200px;
+  font-weight: bold;
+  text-align: center;
+  font-size: 15px;
+  margin-left: 50px;
+  margin-top: 230px;
+  color: rgb(0, 0, 0, 0.8);
+  /* background-color: red; */
+}

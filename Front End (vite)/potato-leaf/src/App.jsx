@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider, Link } from 'react-router-dom'
 import UserProfile from './UserProfile'
 import UserLogin from './UserLogin'
 import UserHistory from './UserHistory'
+import EditProfile from './EditProfile'
 
 
 function App() {
@@ -35,6 +36,10 @@ function App() {
     {
       path: 'user/login',
       element: <UserLogin/>,
+    },
+    {
+      path: 'user/edit-profile',
+      element: <EditProfile/>,
     },
   ])
 
