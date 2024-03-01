@@ -1,14 +1,17 @@
 import userIcon from '/user-icon.png'
-// import { useState } from 'react'
+// import { useState, useEffect } from 'react'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
 // import UserHistory from './UserHistory';
+import data from './data.json'
+  
+
+
 
 
 
 function UserProfile() {
-
     const clickProfile = () => {
         window.location.href = '/user/edit-profile';
     }
@@ -43,10 +46,15 @@ function UserProfile() {
                             <div className="user-pic">
                             <img src={userIcon} width={150} height={150} alt='logo'/>
                             </div>
-                            <h1 className='profile-name'>frankkips</h1>
-                            <p className='profile-info'>franklinekiplagat1@gmail.com</p>
-                            <p className='profile-info'>Londiani</p>
+                            
+                            
+                            
+                            <h1 className='profile-name'>{data.name}</h1>
+                            <p className='profile-info'>{data.email}</p>
+                            <p className='profile-info'>{data.location}</p>
                             <button onClick={clickProfile}>Edit Profile</button>
+                            
+                            
                         </div>
                     </div>
                     <div className='scans'>

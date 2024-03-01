@@ -4,9 +4,21 @@ import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
+import axios from 'axios'
 
 
 function UserLogin(){
+    const [name, setName] = useState()
+    const [password, setPassword] = useState()
+    const [email, setEmail] = useState()
+    const [location, setLocation] = useState()
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        axios.post('',{name, password, email, location})
+        .then(result => console.log(result))
+        .catch(err => console.log(err))
+    }
 
     const [isRegistering, setIsRegistering] = useState(false);
 
@@ -36,19 +48,15 @@ function UserLogin(){
                     <div className='result-div'>
                         <div className='login'>
                             <h2>Welcome Back</h2>
-                            {/* <h1>Username</h1> */}
-                            <input type="text" placeholder='Username'/>
-                            {/* <h1>Password</h1> */}
-                            <input type= "password" placeholder='Password'/>
+                            <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
+                            <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
                             {isRegistering && (
                                 <>
-                                {/* <h1>Email</h1> */}
-                                <input type="email" placeholder='Email'/>
-                                {/* <h1>Location</h1> */}
-                                <input type="text" placeholder='Location'/>
+                                <input type="email" placeholder='Email' onChange={(e)=> setEmail(e.target.value)}/>
+                                <input type="text" placeholder='Location' onChange={(e)=> setLocation(e.target.value)}/>
                                 </>
                             )}
-                            <button>{isRegistering ? 'Register' : 'Login'}</button>
+                            <button onClick={handleSubmit}>{isRegistering ? 'Register' : 'Login'}</button>
                             <p onClick={handleToggle}>{isRegistering ? 'Already have an account? Login' : 'dont have an account?Register'}</p>
 
                         </div>
