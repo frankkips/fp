@@ -1,4 +1,4 @@
-// Code for UserLogin page
+// Code for UserRegister page
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
@@ -8,29 +8,24 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 
 
-
-function UserLogin(){
+function UserRegister(){
     const [name, setName] = useState()
     const [password, setPassword] = useState()
+    const [email, setEmail] = useState()
+    const [location, setLocation] = useState()
     const navigate = useNavigate()
-
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/login',{name, password})
-        .then(result => {
-            console.log(result)
-            if (result.data === "Success"){
-                navigate('/user')
-            }
-        })
-        
+        axios.post('http://localhost:3001/register',{name, password, email, location})
+        .then(result => console.log(result))
+        navigate('/user/login')
         .catch(err => console.log(err))
     }
 
 
     const handleToggle = () => {
-        navigate('/user/register')
+        navigate('/user/login')
     };
 
     return(
@@ -57,7 +52,9 @@ function UserLogin(){
                             <h2>Welcome Back</h2>
                             <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
-                            <button onClick={handleSubmit}>Login</button>
+                            <input type="email" placeholder='Email' onChange={(e)=> setEmail(e.target.value)}/>
+                            <input type="text" placeholder='Location' onChange={(e)=> setLocation(e.target.value)}/>
+                            <button onClick={handleSubmit}>Register</button>
                             <p onClick={handleToggle}>dont have an account?Register</p>
                         </div>
                     </div>
@@ -69,4 +66,4 @@ function UserLogin(){
         </>
     )
 }
-export default UserLogin
+export default UserRegister

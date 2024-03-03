@@ -5,18 +5,20 @@ import './App.css'
 import { Link } from 'react-router-dom'
 // import UserHistory from './UserHistory';
 import data from './data.json'
-  
+import { useNavigate } from 'react-router-dom'
+
 
 
 
 
 
 function UserProfile() {
+    const navigate = useNavigate()
     const clickProfile = () => {
-        window.location.href = '/user/edit-profile';
+        navigate('/user/edit-profile')
     }
     const handleClick = () => {
-        window.location.href = '/user/history';
+        navigate('/user/history')
     };
 
     return (

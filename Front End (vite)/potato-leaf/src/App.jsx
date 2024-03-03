@@ -7,6 +7,7 @@ import UserProfile from './UserProfile'
 import UserLogin from './UserLogin'
 import UserHistory from './UserHistory'
 import EditProfile from './EditProfile'
+import UserRegister from './UserRegister'
 
 
 function App() {
@@ -36,6 +37,10 @@ function App() {
     {
       path: 'user/login',
       element: <UserLogin/>,
+    },
+    {
+      path: 'user/register',
+      element: <UserRegister/>,
     },
     {
       path: 'user/edit-profile',
