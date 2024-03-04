@@ -1,25 +1,40 @@
 import userIcon from '/user-icon.png'
-// import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
-// import UserHistory from './UserHistory';
-import data from './data.json'
-import { useNavigate } from 'react-router-dom'
-
-
-
+// import data from './data.json'
+import { useNavigate, useLocation } from 'react-router-dom'
+import axios from 'axios'
 
 
 
 function UserProfile() {
+    const [data,setData] = useState([])
     const navigate = useNavigate()
+    const location = useLocation()
+    const {name} = location.state
+
+
+    const user = data.filter(user => user.name === name);
+    console.log(user.map(user => user.data))
+
+
     const clickProfile = () => {
         navigate('/user/edit-profile')
     }
     const handleClick = () => {
         navigate('/user/history')
     };
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/getProfile')
+        .then(user => {
+            setData(user.data)
+        })
+        .catch(err => console.log(err))
+    },[name])
+
 
     return (
         <>
@@ -50,10 +65,14 @@ function UserProfile() {
                             </div>
                             
                             
+                            {user.map(user => (
+                                <>
+                                <h1 className='profile-name'>{user.name}</h1>
+                                <p className='profile-info'>{user.email}</p>
+                                <p className='profile-info'>{user.location}</p>
+                                </>
+                            ))}
                             
-                            <h1 className='profile-name'>{data.name}</h1>
-                            <p className='profile-info'>{data.email}</p>
-                            <p className='profile-info'>{data.location}</p>
                             <button onClick={clickProfile}>Edit Profile</button>
                             
                             

@@ -15,13 +15,14 @@ function UserLogin(){
     const navigate = useNavigate()
 
 
+
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3001/login',{name, password})
         .then(result => {
             console.log(result)
             if (result.data === "Success"){
-                navigate('/user')
+                navigate('/user', {state: {name: name}})
             }
         })
         

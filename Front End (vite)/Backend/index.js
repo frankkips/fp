@@ -9,6 +9,14 @@ app.use(cors())
 
 mongoose.connect('mongodb://localhost:2717/user')
 
+app.get('/getProfile',(req,res) => {
+    UserModel.find()
+    .then(user => {
+        res.json(user)
+    })
+    .catch(err => res.json(err))
+})
+
 app.post('/login',(req,res) => {
     const {name, password} = req.body
     UserModel.findOne({name: name})
