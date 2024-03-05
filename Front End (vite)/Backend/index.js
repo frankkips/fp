@@ -9,6 +9,24 @@ app.use(cors())
 
 mongoose.connect('mongodb://localhost:2717/user')
 
+
+app.post('/updateProfile', async(req,res) => {
+    const {id,name,email,location, password} = req.body
+    try{
+        await UserModel.updateOne({_id: id},{
+            $set: {
+                name: name,
+                email: email,
+                location: location,
+                password: password
+            }
+        })
+        return res.json("Updated")
+    }catch(err){
+        res.json(err)
+    }
+})
+
 app.get('/getProfile',(req,res) => {
     UserModel.find()
     .then(user => {

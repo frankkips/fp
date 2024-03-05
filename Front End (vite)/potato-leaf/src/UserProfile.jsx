@@ -1,5 +1,5 @@
 import userIcon from '/user-icon.png'
-import { useState, useEffect } from 'react'
+import { useState, useEffect} from 'react'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
@@ -17,11 +17,10 @@ function UserProfile() {
 
 
     const user = data.filter(user => user.name === name);
-    console.log(user.map(user => user.data))
 
 
     const clickProfile = () => {
-        navigate('/user/edit-profile')
+        navigate('/user/edit-profile', {state: {user: user}})
     }
     const handleClick = () => {
         navigate('/user/history')
@@ -63,8 +62,7 @@ function UserProfile() {
                             <div className="user-pic">
                             <img src={userIcon} width={150} height={150} alt='logo'/>
                             </div>
-                            
-                            
+
                             {user.map(user => (
                                 <>
                                 <h1 className='profile-name'>{user.name}</h1>
@@ -72,10 +70,7 @@ function UserProfile() {
                                 <p className='profile-info'>{user.location}</p>
                                 </>
                             ))}
-                            
                             <button onClick={clickProfile}>Edit Profile</button>
-                            
-                            
                         </div>
                     </div>
                     <div className='scans'>

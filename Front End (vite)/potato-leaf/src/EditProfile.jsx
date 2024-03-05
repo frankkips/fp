@@ -1,15 +1,62 @@
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
-import { useCallback, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+// import axios from 'axios'
 
 
 function EditProfile() {
     const [file, setFile] = useState();
+    const navigate = useNavigate()
     // const [data, setData] = useState();
     const [preview, setPreview] = useState();
+    const location = useLocation()
+    const [name, setName] = useState("")
+    const [email, setEmail] = useState("")
+    const [locate, setLocation] = useState("")
+    const [password, setPassword] = useState("")
+    
+
+
+    // Call API
+    const updateData = () => {
+        const id = location.state.user[0]._id
+        // e.preventDefault()
+        // axios.post('http://localhost:3001/updateProfile',{id,name,email,location, password})
+        // .then(result => console.log(result))
+        // .catch(err => console.log(err))
+
+        fetch('http://localhost:3001/updateProfile',{
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                id: id,
+                name: name,
+                email: email,
+                location: locate,
+                password: password
+            }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data)
+            navigate('/user', {state: {name: name}})
+    })
+    }
+
+
+
+
+    useEffect(() => {
+        setName(location.state.user[0].name)
+        setEmail(location.state.user[0].email)
+        setLocation(location.state.user[0].location)
+        setPassword(location.state.user[0].password)
+    },[location.state.user])
 
 
     // Drag and Drop Features
@@ -36,7 +83,7 @@ function EditProfile() {
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
-                    <Link to='/user' className='user-link'>
+                    <Link to='/user/login' className='user-link'>
                         <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>
@@ -44,11 +91,11 @@ function EditProfile() {
                     <div className='profile-div'>
                         <div className='login'>
                             <h2>Profile Details</h2>
-                            <input type="text" placeholder='Username'/>
-                            <input type= "password" placeholder='Password'/>
-                            <input type="email" placeholder='Email'/>
-                            <input type="text" placeholder='Location'/>
-                            <button>Update</button>
+                            <input type="text" placeholder='Username' defaultValue={name} onChange={(e) => setName(e.target.value)}/>
+                            <input type= "password" placeholder='Password' defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
+                            <input type="email" placeholder='Email' defaultValue={email} onChange={(e) => setEmail(e.target.value)}/>
+                            <input type="text" placeholder='Location' defaultValue={locate} onChange={(e) => setLocation(e.target.value)}/>
+                            <button onClick={updateData}>Update</button>
                         </div>
                         <div className='login'>
                             <h2>Profile Picture</h2>
