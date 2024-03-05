@@ -23,7 +23,7 @@ function Learn() {
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
-                    <Link to='/user' className='user-link'>
+                    <Link to='/user/login' className='user-link'>
                         <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>

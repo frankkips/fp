@@ -31,6 +31,10 @@ function App() {
     element: <UserProfile/>,
   },
   {
+    path: '/user/profile',
+    element: <UserProfile/>,
+  },
+  {
     path: 'user/history',
     element: <UserHistory/>,
     },
