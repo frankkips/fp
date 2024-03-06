@@ -4,13 +4,11 @@ import './App.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
-// import axios from 'axios'
 
 
 function EditProfile() {
     const [file, setFile] = useState();
     const navigate = useNavigate()
-    // const [data, setData] = useState();
     const [preview, setPreview] = useState();
     const location = useLocation()
     const [name, setName] = useState("")
@@ -18,15 +16,9 @@ function EditProfile() {
     const [locate, setLocation] = useState("")
     const [password, setPassword] = useState("")
     
-
-
     // Call API
     const updateData = () => {
         const id = location.state.user[0]._id
-        // e.preventDefault()
-        // axios.post('http://localhost:3001/updateProfile',{id,name,email,location, password})
-        // .then(result => console.log(result))
-        // .catch(err => console.log(err))
 
         fetch('http://localhost:3001/updateProfile',{
             method: 'POST',
@@ -48,7 +40,20 @@ function EditProfile() {
     })
     }
 
-
+    // Convert Image to Base64
+    function convertToBase(e){
+        console.log(e)
+        let reader = new FileReader();
+        reader.readAsDataURL(e.target.files[0]);
+        reader.onload = () => {
+            onchange(reader.result)
+        }
+        reader.onerror = function (error) {
+            console.log('Error: ', error);
+        };
+    }
+    
+    
 
 
     useEffect(() => {
@@ -63,7 +68,7 @@ function EditProfile() {
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles[0])
         setPreview(URL.createObjectURL(acceptedFiles[0]))
-        
+        onchange(convertToBase(acceptedFiles[0]))
 
     }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
@@ -102,7 +107,7 @@ function EditProfile() {
 
                             <div className='p-upload'>
                                 <div className='profile-upload'{...getRootProps()}>
-                                    <input type='file' {...getInputProps()} />
+                                    <input type='file'{...getInputProps()} />
                                     {
                                     !file && (
                                         isDragActive ?
