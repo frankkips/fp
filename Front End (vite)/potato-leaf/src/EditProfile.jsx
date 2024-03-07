@@ -54,8 +54,6 @@ function EditProfile() {
     }
     
     
-
-
     useEffect(() => {
         setName(location.state.user[0].name)
         setEmail(location.state.user[0].email)
@@ -72,7 +70,6 @@ function EditProfile() {
 
     }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
-
 
     return (
         <>
