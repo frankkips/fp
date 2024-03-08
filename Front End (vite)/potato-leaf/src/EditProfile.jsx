@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
 
+// musunowakho
+// kumaintaain streak joh
 
 function EditProfile() {
     const [file, setFile] = useState();
