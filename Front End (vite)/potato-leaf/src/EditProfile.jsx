@@ -6,7 +6,7 @@ import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
 
 // musunowakho
-// kumaintaain streak joh
+// kumaintaain streak jooh!
 
 function EditProfile() {
     const [file, setFile] = useState();
