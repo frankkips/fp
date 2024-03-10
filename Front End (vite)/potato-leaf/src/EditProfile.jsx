@@ -4,10 +4,8 @@ import './App.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
-
 // musunowakho
 // kumaintaain streak jooh!
-
 function EditProfile() {
     const [file, setFile] = useState();
     const navigate = useNavigate()
@@ -44,9 +42,9 @@ function EditProfile() {
 
     // Convert Image to Base64
     function convertToBase(e){
-        console.log(e)
+        // console.log(e)
         let reader = new FileReader();
-        reader.readAsDataURL(e.target.files[0]);
+        reader.readAsDataURL(e);
         reader.onload = () => {
             onchange(reader.result)
         }
