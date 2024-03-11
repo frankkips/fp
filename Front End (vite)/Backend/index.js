@@ -8,7 +8,31 @@ app.use(express.json())
 app.use(cors())
 
 mongoose.connect('mongodb://localhost:2717/user')
+// ================================================================================
+const multer  = require('multer')
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, '../potato-leaf/src/images/')
+    },
+    filename: function (req, file, cb) {
+        const uniqueSuffix = Date.now()
+        cb(null, uniqueSuffix + file.originalname)
+    }
+})
+
+const upload = multer({ storage: storage })
+
+app.post('/update-dp/:id',upload.single('image'), async(req,res) => {
+    const { id } = req.params
+    const imageName = req.file.filename
+    try{
+        await UserModel.findByIdAndUpdate(id,{image: imageName})
+        res.json("Image Uploaded")
+    }catch(err){
+        res.json(err)
+    }
+})
 
 app.post('/updateProfile', async(req,res) => {
     const {id,name,email,location, password} = req.body

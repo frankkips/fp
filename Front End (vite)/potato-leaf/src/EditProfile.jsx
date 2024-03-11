@@ -4,8 +4,10 @@ import './App.css'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
+import axios from 'axios'
+
 // musunowakho
-// kumaintaain streak jooh!
+
 function EditProfile() {
     const [file, setFile] = useState();
     const navigate = useNavigate()
@@ -15,10 +17,16 @@ function EditProfile() {
     const [email, setEmail] = useState("")
     const [locate, setLocation] = useState("")
     const [password, setPassword] = useState("")
+    const [image, setImage] = useState("")
+    const [dbImage, setDbImage] = useState("")
+    console.log(dbImage)
+
+    const waba = ''
     
     // Call API
     const updateData = () => {
         const id = location.state.user[0]._id
+        
 
         fetch('http://localhost:3001/updateProfile',{
             method: 'POST',
@@ -40,17 +48,28 @@ function EditProfile() {
     })
     }
 
+    const updatePic = async(e) => {
+        e.preventDefault()
+        const formdata = new FormData()
+        formdata.append('image', image)
+
+        const id = location.state.user[0]._id
+
+        const result = await axios.post(
+            'http://localhost:3001/update-dp/' + id,
+            formdata,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        )
+    }
+
     // Convert Image to Base64
     function convertToBase(e){
-        // console.log(e)
-        let reader = new FileReader();
-        reader.readAsDataURL(e);
-        reader.onload = () => {
-            onchange(reader.result)
-        }
-        reader.onerror = function (error) {
-            console.log('Error: ', error);
-        };
+        console.log(e)
+        setImage(e)
     }
     
     
@@ -59,6 +78,7 @@ function EditProfile() {
         setEmail(location.state.user[0].email)
         setLocation(location.state.user[0].location)
         setPassword(location.state.user[0].password)
+        setDbImage(location.state.user[0].image)
     },[location.state.user])
 
 
@@ -103,6 +123,7 @@ function EditProfile() {
                             <h2>Profile Picture</h2>
 
                             <div className='p-upload'>
+                                <img src = {waba} alt='User Profile'/>
                                 <div className='profile-upload'{...getRootProps()}>
                                     <input type='file'{...getInputProps()} />
                                     {
@@ -122,7 +143,7 @@ function EditProfile() {
                                 
                             </div>
 
-                            {/* <button>Upload</button> */}
+                            <button onClick={updatePic}>Upload</button>
                         </div>
                     </div>
                     
