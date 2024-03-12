@@ -54,7 +54,7 @@ function EditProfile() {
 
         const id = location.state.user[0]._id
         
-        const result = await axios.post(
+        await axios.post(
             'http://localhost:3001/update-dp/' + id,
             formdata,
             {
