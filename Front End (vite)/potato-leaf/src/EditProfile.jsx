@@ -21,7 +21,6 @@ function EditProfile() {
     const [dbImage, setDbImage] = useState("")
     console.log(dbImage)
 
-    const waba = ''
     
     // Call API
     const updateData = () => {
@@ -54,7 +53,7 @@ function EditProfile() {
         formdata.append('image', image)
 
         const id = location.state.user[0]._id
-
+        
         const result = await axios.post(
             'http://localhost:3001/update-dp/' + id,
             formdata,
@@ -123,19 +122,25 @@ function EditProfile() {
                             <h2>Profile Picture</h2>
 
                             <div className='p-upload'>
-                                <img src = {waba} alt='User Profile'/>
                                 <div className='profile-upload'{...getRootProps()}>
                                     <input type='file'{...getInputProps()} />
                                     {
-                                    !file && (
-                                        isDragActive ?
-                                        <p>Drop the files here ...</p> :
-                                        <p >Drag n Drop or Click</p>
-                                    )
-                                    }
-                                    {
-                                    file && (
-                                    <img className='profile-leaf'src={preview} />
+                                    
+                                    !dbImage && !file ? (
+                                            isDragActive ?
+                                            <p>Drop the files here ...</p> :
+                                            <p >Drag n Drop or Click</p>
+                                        ):
+                                        
+                                        file ? (
+                                        <img className='profile-leaf'src={preview} />
+                                        ):
+                                        
+                                    
+                                    
+                                    dbImage && (
+                                        <img className='profile-leaf'src={`/images/${dbImage}`} />
+                                    
                                     )
                                     }
                                     

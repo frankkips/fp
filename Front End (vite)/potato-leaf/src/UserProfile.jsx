@@ -14,9 +14,12 @@ function UserProfile() {
     const navigate = useNavigate()
     const location = useLocation()
     const {name} = location.state
+    // console.log(data)
 
 
     const user = data.filter(user => user.name === name);
+    const dbImage = user.map(user => user.image)
+    console.log(dbImage)
 
 
     const clickProfile = () => {
@@ -60,7 +63,7 @@ function UserProfile() {
                         <div className='user-show'>
                             <div className="user-cover"></div>
                             <div className="user-pic">
-                            <img src={userIcon} width={150} height={150} alt='logo'/>
+                            <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={150} height={150} alt='logo'/>
                             </div>
 
                             {user.map(user => (
