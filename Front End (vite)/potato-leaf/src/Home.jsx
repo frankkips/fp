@@ -18,6 +18,9 @@ function Home() {
     const [user, setUser] = useState()
     console.log(user)
 
+
+    axios.defaults.withCredentials = true
+
     // Check Session for userlogin
     useEffect(() => {
         axios.get('http://localhost:3001/')

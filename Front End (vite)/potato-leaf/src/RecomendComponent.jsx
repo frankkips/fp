@@ -1,4 +1,3 @@
-import { useNavigate } from 'react-router-dom';
 import './App.css'
 import PropTypes from 'prop-types';
 
@@ -30,18 +29,15 @@ const EarlyBlightList = () => (
 
 const ReccomendComponent = ({ data }) => {
         const disease = data.class;
-        const navigate = useNavigate()
 
-        const handleHome = () => {
-            navigate('/')
-        }
+        
         
         if (disease === 'Late Blight') {
             return(
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
                     <LateBlightList />
-                    <button onClick={handleHome}>Back</button>
+                    <a className='rec-btn' href="/">Home</a>
                 </div>
             )
         } else if (disease === 'Early Blight') {
@@ -49,7 +45,7 @@ const ReccomendComponent = ({ data }) => {
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
                     <EarlyBlightList />
-                    <button onClick={handleHome}>Back</button>
+                    <a className='rec-btn' href="/">Home</a>
                 </div>
             )
         } else {
@@ -57,7 +53,7 @@ const ReccomendComponent = ({ data }) => {
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
                     <h1 className='recomend-text'>Sorry, no recommendations available for this results</h1>
-                    <button onClick={handleHome}>Back</button>
+                    <a className='rec-btn' href="/">Home</a>
                 </div>
             )
         }
