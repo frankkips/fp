@@ -1,7 +1,7 @@
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import {useCallback}  from 'react'
 import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
@@ -15,7 +15,27 @@ function Home() {
     const [data, setData] = useState();
     const [preview, setPreview] = useState();
     const [showResult, setShowResult] = useState(false);
-    // const [resultData, setResultData] = useState(null);
+    const [user, setUser] = useState()
+    console.log(user)
+
+    // Check Session for userlogin
+    useEffect(() => {
+        axios.get('http://localhost:3001/')
+        .then(res => {
+            if (res.data.valid === true){
+                setUser(res.data.username)
+            }else{
+                setUser(null)
+            }
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
+
+
+
 
     const sendFile = async () => {
         if (file) {
@@ -75,7 +95,7 @@ function Home() {
                 <div className='info-container'>
                 {!showResult ? (
                     <div className='message-btn'>
-                        <h1 className='text'>Upload or Drag your Potato leaf Image and will tell you if its healthy or not</h1>
+                        <h1 className='text'>{user ? `Hello ${user} Upload or Drag your Potato leaf Image` : 'Upload or Drag your Potato leaf Image and will tell you if its healthy or not'}</h1>
                         <button onClick={sendFile}>Check</button>
                     </div>
                 ) : (

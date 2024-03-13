@@ -2,10 +2,31 @@ const express = require('express')
 const mongoose = require('mongoose')
 const cors = require('cors')
 const UserModel = require('./Models/User')
+const session = require('express-session')
+const cookieParser = require('cookie-parser')
+const bodyParser = require('body-parser')
 
 const app = express()
 app.use(express.json())
-app.use(cors())
+app.use(cors(
+    {
+        origin: "http://localhost:5173",
+        methods: ["GET","POST"],
+        credentials: true
+    }
+))
+app.use(cookieParser())
+app.use(bodyParser.json())
+app.use(session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+        secure: false,
+        maxAge: 1000 * 60 * 60 * 24
+    }
+}))
+
 
 mongoose.connect('mongodb://localhost:2717/user')
 // ================================================================================
@@ -59,13 +80,26 @@ app.get('/getProfile',(req,res) => {
     .catch(err => res.json(err))
 })
 
+
+app.get('/' ,(req,res) => {
+    if (req.session.user){
+        return res.json({valid: true ,username: req.session.user})
+    }else{
+        return res.json({valid: false})
+    }
+})
+
+
+
 app.post('/login',(req,res) => {
     const {name, password} = req.body
     UserModel.findOne({name: name})
     .then(user => {
         if (user){
             if (user.password === password){
-                res.json("Success")
+                req.session.user = user.name
+                console.log(req.session.user)
+                res.json({Login: true ,username: req.session.user})
             }else{
                 res.json("The password is incorrect")
             }
