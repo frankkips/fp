@@ -27,9 +27,24 @@ app.use(session({
     }
 }))
 
-
+// Connect to MongoDB
 mongoose.connect('mongodb://localhost:2717/user')
-// ================================================================================
+
+
+// Connection event handlers
+mongoose.connection.on('connected', () => {
+    console.log('Connected to MongoDB');
+});
+
+mongoose.connection.on('error', (err) => {
+    console.error('MongoDB connection error:', err);
+});
+
+mongoose.connection.on('disconnected', () => {
+    console.log('Disconnected from MongoDB');
+});
+
+// =================================================================================
 const multer  = require('multer')
 
 const storage = multer.diskStorage({
@@ -55,6 +70,7 @@ app.post('/update-dp/:id',upload.single('image'), async(req,res) => {
     }
 })
 
+// =================================PROFILE PART================================================
 app.post('/updateProfile', async(req,res) => {
     const {id,name,email,location, password} = req.body
     try{
@@ -80,7 +96,7 @@ app.get('/getProfile',(req,res) => {
     .catch(err => res.json(err))
 })
 
-
+// ============================================================================================
 app.get('/' ,(req,res) => {
     if (req.session.user){
         return res.json({valid: true ,username: req.session.user})
@@ -90,7 +106,7 @@ app.get('/' ,(req,res) => {
 })
 
 
-
+// =====================================LOGIN and REGISTER======================================
 app.post('/login',(req,res) => {
     const {name, password} = req.body
     UserModel.findOne({name: name})

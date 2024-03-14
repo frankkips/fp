@@ -5,7 +5,13 @@ const UserSchema = new mongoose.Schema({
     email:String,
     location:String,
     password:String,
-    image:String
+    image:String,
+    data:[{
+        disease: String,
+        confidence: String,
+        image: String
+    }]
+    
 })
 
 const UserModel = mongoose.model("users", UserSchema)

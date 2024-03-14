@@ -1,22 +1,50 @@
 // import axios from 'axios'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import { Link } from 'react-router-dom'
 import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
+import axios from 'axios'
 
 const API_KEY = "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"
 
 function Chatgpt(){
+    const [user, setUser] = useState()
     const [typing , setTyping] = useState(false);
-    const [messages, setMessages] = useState([
-        {
-            message: "Hello, how can I help you today?",
-            sender: 'ChatGPT'
+    const [messages, setMessages] = useState([])
+
+
+     // Update initial message when user state changes
+    useEffect(() => {
+        if (user) {
+            setMessages([
+                {
+                    message: `Hello ${user}, how can I help you today?`,
+                    sender: 'ChatGPT'
+                }
+            ]);
         }
-    ])
+    }, [user]);
+
+    axios.defaults.withCredentials = true
+    
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/')
+        .then(res => {
+            if (res.data.valid === true){
+                setUser(res.data.username)
+            }else{
+                setUser(null)
+            }
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
 
     const handleSend = async (message) => {
         const newMessage = {
@@ -67,8 +95,6 @@ async function getChatGPTResponse(chatMessage){
     }).then((data) => {
         return data.json();
     }).then((data) => {
-        console.log(data);
-        console.log(data.choices[0].message.content);
         setMessages([
             ...chatMessage,{
             message: data.choices[0].message.content,
@@ -106,7 +132,7 @@ async function getChatGPTResponse(chatMessage){
                                 <ChatContainer className='chat-container'>
                                     <MessageList
                                         scrollBehavior='smooth'
-                                        typingIndicator={typing ? <TypingIndicator content='ChatGPT is typing...' /> : null}
+                                        typingIndicator={typing ? <TypingIndicator content='ChatBot is typing...' /> : null}
                                     >
                                         {messages.map((message, i) => {
                                             return <Message key={i} model={message}/>
