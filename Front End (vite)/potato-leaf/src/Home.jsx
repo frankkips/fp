@@ -16,7 +16,9 @@ function Home() {
     const [preview, setPreview] = useState();
     const [showResult, setShowResult] = useState(false);
     const [user, setUser] = useState()
+    const [image, setImage] = useState()
     console.log(user)
+    console.log(image)
 
 
     axios.defaults.withCredentials = true
@@ -37,7 +39,11 @@ function Home() {
         })
     }, [])
 
-
+    // Convert Image to Base64 - not really!
+    function convertToBase(e){
+        console.log(e)
+        setImage(e)
+    }
 
 
     const sendFile = async () => {
@@ -69,7 +75,7 @@ function Home() {
     const onDrop = useCallback(acceptedFiles => {
         setFile(acceptedFiles[0])
         setPreview(URL.createObjectURL(acceptedFiles[0]))
-        
+        onchange(convertToBase(acceptedFiles[0]))
 
     }, [])
     const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
