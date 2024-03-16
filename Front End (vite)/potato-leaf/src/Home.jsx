@@ -8,8 +8,6 @@ import axios from 'axios';
 import ResultComponent from './ResultComponent'
 import { Link } from 'react-router-dom'
 
-
-
 function Home() {
     const [file, setFile] = useState();
     const [data, setData] = useState();
