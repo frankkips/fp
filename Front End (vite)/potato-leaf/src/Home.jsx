@@ -18,7 +18,7 @@ function Home() {
     console.log(user)
     console.log(image)
 
-
+// Maintain the name
     axios.defaults.withCredentials = true
 
     // Check Session for userlogin
