@@ -15,8 +15,9 @@ function Home() {
     const [showResult, setShowResult] = useState(false);
     const [user, setUser] = useState()
     const [image, setImage] = useState()
-    console.log(user)
-    console.log(image)
+    // console.log(user)
+    // console.log(data)
+
 
 // Maintain the name
     axios.defaults.withCredentials = true
@@ -43,6 +44,25 @@ function Home() {
         setImage(e)
     }
 
+    const updatePic = async(data) => {
+        console.log(data)
+        const formdata = new FormData()
+        formdata.append('image', image)
+        formdata.append('data', data)
+        await axios.post(
+            'http://localhost:3001/upload/' + user,
+            formdata,
+            {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
+            }
+        )
+        .then(response => {
+            console.log(response)
+            
+        })
+    }
 
     const sendFile = async () => {
         if (file) {
@@ -63,10 +83,16 @@ function Home() {
             reader.readAsDataURL(file);
             
         }
+        
+
+
         if (data !== null){ 
             setShowResult(true); // Update state to show the result content
+            updatePic(data) // Update the database with the image
             }  
     }
+
+
 
 
 // Drag and Drop Features

@@ -27,7 +27,7 @@ app.use(session({
     }
 }))
 
-// Connect to MongoDB
+// ===================================Connect to MongoDB=========================================
 mongoose.connect('mongodb://localhost:2717/user')
 
 
@@ -64,6 +64,22 @@ app.post('/update-dp/:id',upload.single('image'), async(req,res) => {
     const imageName = req.file.filename
     try{
         await UserModel.findByIdAndUpdate(id,{image: imageName})
+        res.json("Image Uploaded")
+    }catch(err){
+        res.json(err)
+    }
+})
+// ===================================FILE IMAGE UPLOAD=========================================
+
+app.post('/upload/:name',upload.single('image'), async(req,res) => {
+    const imageName = req.file.filename
+    const {name} = req.params
+    const data = req.body
+    try{
+        await UserModel.findOneAndUpdate(
+            {name:name} ,
+            { $push: { 'data': data}},
+            { new: true })
         res.json("Image Uploaded")
     }catch(err){
         res.json(err)

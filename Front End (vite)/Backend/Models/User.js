@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema({
     password:String,
     image:String,
     data:[{
-        disease: String,
+        class: String,
         confidence: String,
         image: String
     }]
