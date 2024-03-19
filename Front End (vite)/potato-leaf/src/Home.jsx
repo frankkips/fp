@@ -16,7 +16,6 @@ function Home() {
     const [user, setUser] = useState()
     const [image, setImage] = useState()
     // console.log(user)
-    // console.log(data)
 
 
 // Maintain the name
@@ -48,7 +47,8 @@ function Home() {
         console.log(data)
         const formdata = new FormData()
         formdata.append('image', image)
-        formdata.append('data', data)
+        formdata.append('class', data.class)
+        formdata.append('confidence', data.confidence)
         await axios.post(
             'http://localhost:3001/upload/' + user,
             formdata,
@@ -63,6 +63,9 @@ function Home() {
             
         })
     }
+    // updatePic()
+
+
 
     const sendFile = async () => {
         if (file) {
@@ -78,6 +81,7 @@ function Home() {
                     });
                 if (res.status === 200) {
                     setData(res.data);
+                    await updatePic(res.data)
                 }
             }
             reader.readAsDataURL(file);

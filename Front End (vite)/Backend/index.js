@@ -72,13 +72,21 @@ app.post('/update-dp/:id',upload.single('image'), async(req,res) => {
 // ===================================FILE IMAGE UPLOAD=========================================
 
 app.post('/upload/:name',upload.single('image'), async(req,res) => {
-    const imageName = req.file.filename
     const {name} = req.params
-    const data = req.body
+    const imageName = req.file.filename
+    const { class: disease, confidence } = req.body
     try{
+
+        const newData = {
+            class: disease,
+            confidence,
+            image: imageName
+        };
+
+
         await UserModel.findOneAndUpdate(
             {name:name} ,
-            { $push: { 'data': data}},
+            { $push: { data: newData }},
             { new: true })
         res.json("Image Uploaded")
     }catch(err){
@@ -130,6 +138,7 @@ app.post('/login',(req,res) => {
         if (user){
             if (user.password === password){
                 req.session.user = user.name
+                
                 console.log(req.session.user)
                 res.json({Login: true ,username: req.session.user})
             }else{
