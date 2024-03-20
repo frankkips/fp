@@ -1,31 +1,52 @@
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import leafIcon from '/Early.jpg'
 import Cells from './Cells'
 import { differenceInDays, endOfMonth, startOfMonth, sub, add, format } from 'date-fns';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import axios from 'axios'
 
 
 
 const UserHistory =  () => {
+    const location = useLocation()
+    const {name} = location.state
+    const [data,setData] = useState([])
+
+  
+    // let finalData = []
+
+    // if (data?.data?.length){
+    //     finalData = data.data
+    //     console.log(finalData[1].class)
+    
+    // }
+
+    
+
+    // const parsedData = JSON.parse(data);
+
+    // Get data from API
+    useEffect(() => {
+        axios.get('http://localhost:3001/getData/' + name)
+        .then(user => {
+            setData(user.data.data)
+        })
+        .catch(err => console.log(err))
+    },[])
+
 
     const [value , setCurrentDate] = useState(new Date())
-
     const startDate = startOfMonth(value)
     const endDate = endOfMonth(value)
     const numDays = differenceInDays(endDate, startDate) + 1
-
     const prefixDays = startDate.getDay();
 
     const prevMonth = () => setCurrentDate(sub(value, {months: 1}));
     const nextMonth = () => setCurrentDate(add(value,{months: 1}))
 
-    // const handleClickDate = (index) => {
-    //     const date = setDate(index)
-    //     setCurrentDate(date)
-    // }
 
     const daysOfWeek= ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
@@ -51,54 +72,22 @@ const UserHistory =  () => {
                 </div>
                 <div className='hist-divider'>
                 <div className='hist-container'>
-                    <div className='hist-cont'>
+                    
+                    {data.map((item) => 
+                        <div className='hist-cont' key={item._id}>
+                        
                         <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
                         <div>
-                            <h1>Early Blight Disease</h1>
-                            <h2>100%</h2>
+                            <h1>{item.class}</h1>
+                            <h2>{(parseFloat(item.confidence) * 100).toFixed(2)}%</h2>
                             <p>27 Feb 2024</p>
                         </div>
-                    </div>
-                    <div className='hist-cont'>
-                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
-                        <div>
-                            <h1>Early Blight Disease</h1>
-                            <h2>100%</h2>
-                            <p>27 Feb 2024</p>
+                        
                         </div>
-                    </div>
-                    <div className='hist-cont'>
-                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
-                        <div>
-                            <h1>Early Blight Disease</h1>
-                            <h2>100%</h2>
-                            <p>27 Feb 2024</p>
-                        </div>
-                    </div>
-                    <div className='hist-cont'>
-                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
-                        <div>
-                            <h1>Early Blight Disease</h1>
-                            <h2>100%</h2>
-                            <p>27 Feb 2024</p>
-                        </div>
-                    </div>
-                    <div className='hist-cont'>
-                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
-                        <div>
-                            <h1>Early Blight Disease</h1>
-                            <h2>100%</h2>
-                            <p>27 Feb 2024</p>
-                        </div>
-                    </div>
-                    <div className='hist-cont'>
-                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
-                        <div>
-                            <h1>Early Blight Disease</h1>
-                            <h2>100%</h2>
-                            <p>27 Feb 2024</p>
-                        </div>
-                    </div>
+                        
+                    
+                        )}
+
                 </div>
                 <div className="cal-cont">
                     <div className='hist-cont'>

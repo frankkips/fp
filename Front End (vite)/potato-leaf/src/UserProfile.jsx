@@ -14,19 +14,20 @@ function UserProfile() {
     const navigate = useNavigate()
     const location = useLocation()
     const {name} = location.state
-    // console.log(data)
+    // console.log(name)
 
 
     const user = data.filter(user => user.name === name);
+    // console.log(user)
     const dbImage = user.map(user => user.image)
-    console.log(dbImage)
+    // console.log(dbImage)
 
 
     const clickProfile = () => {
         navigate('/user/edit-profile', {state: {user: user}})
     }
     const handleClick = () => {
-        navigate('/user/history')
+        navigate('/user/history', {state: {name: name}})
     };
 
     useEffect(() => {

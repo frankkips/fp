@@ -120,6 +120,16 @@ app.get('/getProfile',(req,res) => {
     .catch(err => res.json(err))
 })
 
+// =====================================GET DATA===============================================
+app.get('/getData/:name',(req,res) => {
+    const {name} = req.params
+    UserModel.findOne({name: name}).select('-_id data')
+    .then(user => {
+        res.json(user)
+    })
+    .catch(err => res.json(err))
+})
+
 // ============================================================================================
 app.get('/' ,(req,res) => {
     if (req.session.user){
