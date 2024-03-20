@@ -3,10 +3,47 @@ import './index.css'
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
 
 function Learn() {
+    const [user, setUser] = useState()
+    const [profImage, setProfImage] = useState([])
 
+
+    // Get the profile image
+    useEffect(() => {
+        axios.get('http://localhost:3001/getProfile')
+        .then(user => {
+            setProfImage(user.data)
+            return
+        })
+        .catch(err => console.log(err))
+    },[])
+
+    // Get the name of the user
+    const profileFoto = profImage.filter(waba => waba.name === user);
+    const dbImage = profileFoto.map(waba => waba.image)
+
+    // Maintain the name
+    axios.defaults.withCredentials = true
+
+    // Check Session for userlogin
+    useEffect(() => {
+        axios.get('http://localhost:3001/')
+        .then(res => {
+            if (res.data.valid === true){
+                setUser(res.data.username)
+            }else{
+                setUser(null)
+            }
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
 
 
     return (
@@ -24,7 +61,7 @@ function Learn() {
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
                     <Link to='/user/login' className='user-link'>
-                        <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
+                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>
                 <div className="learn-title">

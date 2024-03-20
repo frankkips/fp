@@ -15,6 +15,7 @@ function Home() {
     const [showResult, setShowResult] = useState(false);
     const [user, setUser] = useState()
     const [image, setImage] = useState()
+    const [profImage, setProfImage] = useState([])
     // console.log(user)
 
 
@@ -36,6 +37,20 @@ function Home() {
             console.log(err)
         })
     }, [])
+
+    // Get the profile image
+    useEffect(() => {
+        axios.get('http://localhost:3001/getProfile')
+        .then(user => {
+            setProfImage(user.data)
+            return
+        })
+        .catch(err => console.log(err))
+    },[])
+
+    // Get the name of the user
+    const profileFoto = profImage.filter(waba => waba.name === user);
+    const dbImage = profileFoto.map(waba => waba.image)
 
     // Convert Image to Base64 - not really!
     function convertToBase(e){
@@ -126,7 +141,7 @@ function Home() {
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
                     <Link to='/user/login' className='user-link'>
-                        <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
+                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>
                 <div className='info-container'>

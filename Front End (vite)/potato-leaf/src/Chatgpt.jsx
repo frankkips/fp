@@ -14,7 +14,22 @@ function Chatgpt(){
     const [user, setUser] = useState()
     const [typing , setTyping] = useState(false);
     const [messages, setMessages] = useState([])
+    const [profImage, setProfImage] = useState([])
 
+
+    // Get the profile image
+    useEffect(() => {
+        axios.get('http://localhost:3001/getProfile')
+        .then(user => {
+            setProfImage(user.data)
+            return
+        })
+        .catch(err => console.log(err))
+    },[])
+
+    // Get the name of the user
+    const profileFoto = profImage.filter(waba => waba.name === user);
+    const dbImage = profileFoto.map(waba => waba.image)
 
      // Update initial message when user state changes
     useEffect(() => {
@@ -122,7 +137,7 @@ async function getChatGPTResponse(chatMessage){
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
                     <Link to='/user/login' className='user-link'>
-                        <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
+                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>
                 <div className='info-container'>
