@@ -2,7 +2,6 @@ import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link, useLocation } from 'react-router-dom'
-import leafIcon from '/Early.jpg'
 import Cells from './Cells'
 import { differenceInDays, endOfMonth, startOfMonth, sub, add, format } from 'date-fns';
 import { useEffect, useState } from 'react'
@@ -14,19 +13,23 @@ const UserHistory =  () => {
     const location = useLocation()
     const {name} = location.state
     const [data,setData] = useState([])
+    const [profImage, setProfImage] = useState([])
 
-  
-    // let finalData = []
 
-    // if (data?.data?.length){
-    //     finalData = data.data
-    //     console.log(finalData[1].class)
-    
-    // }
+    // Get the profile image
+    useEffect(() => {
+        axios.get('http://localhost:3001/getProfile')
+        .then(user => {
+            setProfImage(user.data)
+            return
+        })
+        .catch(err => console.log(err))
+    },[])
 
-    
+    // Get the name of the user
+    const profileFoto = profImage.filter(waba => waba.name === name);
+    const dbImage = profileFoto.map(waba => waba.image)
 
-    // const parsedData = JSON.parse(data);
 
     // Get data from API
     useEffect(() => {
@@ -35,7 +38,7 @@ const UserHistory =  () => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
-    },[])
+    },[name])
 
 
     const [value , setCurrentDate] = useState(new Date())
@@ -67,7 +70,7 @@ const UserHistory =  () => {
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
                     <Link to='/user/login' className='user-link'>
-                        <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
+                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>
                 <div className='hist-divider'>
@@ -76,9 +79,9 @@ const UserHistory =  () => {
                     {data.map((item) => 
                         <div className='hist-cont' key={item._id}>
                         
-                        <img src={leafIcon} width={150} height={150} alt="leaf img"  className='hist-img'/>
+                        <img src={`/images/${item.image}`} width={150} height={150} alt="leaf img"  className='hist-img'/>
                         <div>
-                            <h1>{item.class}</h1>
+                            <h1>{item.class}<br/>Disease</h1>
                             <h2>{(parseFloat(item.confidence) * 100).toFixed(2)}%</h2>
                             <p>27 Feb 2024</p>
                         </div>

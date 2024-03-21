@@ -1,4 +1,3 @@
-// Code for UserLogin page
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'

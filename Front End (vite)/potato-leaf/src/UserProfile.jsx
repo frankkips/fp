@@ -3,7 +3,6 @@ import { useState, useEffect} from 'react'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
-// import data from './data.json'
 import { useNavigate, useLocation } from 'react-router-dom'
 import axios from 'axios'
 
@@ -14,13 +13,10 @@ function UserProfile() {
     const navigate = useNavigate()
     const location = useLocation()
     const {name} = location.state
-    // console.log(name)
 
 
     const user = data.filter(user => user.name === name);
-    // console.log(user)
     const dbImage = user.map(user => user.image)
-    // console.log(dbImage)
 
 
     const clickProfile = () => {

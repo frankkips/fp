@@ -16,7 +16,6 @@ function Home() {
     const [user, setUser] = useState()
     const [image, setImage] = useState()
     const [profImage, setProfImage] = useState([])
-    // console.log(user)
 
 
 // Maintain the name
@@ -78,8 +77,6 @@ function Home() {
             
         })
     }
-    // updatePic()
-
 
 
     const sendFile = async () => {
