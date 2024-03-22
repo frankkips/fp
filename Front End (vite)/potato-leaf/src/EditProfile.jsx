@@ -120,7 +120,6 @@ function EditProfile() {
                         </div>
                         <div className='login'>
                             <h2>Profile Picture</h2>
-
                             <div className='p-upload'>
                                 <div className='profile-upload'{...getRootProps()}>
                                     <input type='file'{...getInputProps()} />
@@ -148,7 +147,7 @@ function EditProfile() {
                                 
                             </div>
 
-                            <button onClick={updatePic}>Upload</button>
+                            <button className='upbtn' onClick={updatePic}>Upload</button>
                         </div>
                     </div>
                     

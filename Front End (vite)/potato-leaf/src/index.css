@@ -38,6 +38,7 @@
   margin-top: 30px;
   font-size: 96px;
   margin-left: 285px;
+  margin-right: 10px;
   color: white;
   font-weight: bold;
 }
@@ -318,7 +319,9 @@
   font-family: sans-serif;
   font-weight: bold;
   color: white;
-  margin-left: 120px;
+  /* margin-left: 120px; */
+  /* background-color: #096319; */
+  text-align: center;
 }
 .scan-info{
   color: white;
@@ -558,4 +561,8 @@
   margin-top: 230px;
   color: rgb(0, 0, 0, 0.8);
   /* background-color: red; */
+}
+
+.login .upbtn{
+  margin-top: 10px;
 }

@@ -12,6 +12,10 @@ const ResultComponent = ({ data }) => {
     const disease = data.class;
     let confidence = data.confidence;
     confidence = (parseFloat(data.confidence) * 100).toFixed(2);
+    console.log(confidence)
+    if (confidence == 100){
+        confidence = (parseFloat(data.confidence) * 100).toFixed(0);
+    }
 
     return (
         <>

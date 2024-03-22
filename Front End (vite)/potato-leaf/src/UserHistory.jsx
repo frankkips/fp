@@ -14,6 +14,7 @@ const UserHistory =  () => {
     const {name} = location.state
     const [data,setData] = useState([])
     const [profImage, setProfImage] = useState([])
+    // console.log(data.length)
 
 
     // Get the profile image
@@ -81,7 +82,7 @@ const UserHistory =  () => {
                         
                         <img src={`/images/${item.image}`} width={150} height={150} alt="leaf img"  className='hist-img'/>
                         <div>
-                            <h1>{item.class}<br/>Disease</h1>
+                            <h1>{item.class}</h1>
                             <h2>{(parseFloat(item.confidence) * 100).toFixed(2)}%</h2>
                             <p>27 Feb 2024</p>
                         </div>

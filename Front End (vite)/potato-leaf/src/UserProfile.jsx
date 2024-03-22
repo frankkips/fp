@@ -10,10 +10,20 @@ import axios from 'axios'
 
 function UserProfile() {
     const [data,setData] = useState([])
+    const [waba,setWaba] = useState([])
     const navigate = useNavigate()
     const location = useLocation()
     const {name} = location.state
+    // console.log(waba.length)
 
+    // Get data from API
+    useEffect(() => {
+        axios.get('http://localhost:3001/getData/' + name)
+        .then(user => {
+            setWaba(user.data.data)
+        })
+        .catch(err => console.log(err))
+    },[name])
 
     const user = data.filter(user => user.name === name);
     const dbImage = user.map(user => user.image)
@@ -74,7 +84,7 @@ function UserProfile() {
                         </div>
                     </div>
                     <div className='scans'>
-                        <h1 className='scans-count'>6</h1>
+                        <h1 className='scans-count'>{waba.length}</h1>
                         <p className='scan-info'>Scans Done So Far</p>
                         <button onClick={handleClick}>Your History</button>
                     </div>
