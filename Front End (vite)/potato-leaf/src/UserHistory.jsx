@@ -1,7 +1,7 @@
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
-import { Link, useLocation } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Cells from './Cells'
 import { differenceInDays, endOfMonth, startOfMonth, sub, add, format } from 'date-fns';
 import { useEffect, useState } from 'react'
@@ -10,11 +10,12 @@ import axios from 'axios'
 
 
 const UserHistory =  () => {
-    const location = useLocation()
-    const {name} = location.state
+    // const location = useLocation()
+    // const {name} = location.state
     const [data,setData] = useState([])
     const [profImage, setProfImage] = useState([])
     // console.log(data.length)
+    const [user,setUser] = useState()
 
 
     // Get the profile image
@@ -27,19 +28,39 @@ const UserHistory =  () => {
         .catch(err => console.log(err))
     },[])
 
+    // Maintain the name
+    axios.defaults.withCredentials = true
+
+    // Check Session for userlogin
+    useEffect(() => {
+        axios.get('http://localhost:3001/')
+        .then(res => {
+            if (res.data.valid === true){
+                setUser(res.data.username)
+            }else{
+                setUser(null)
+            }
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
+
     // Get the name of the user
-    const profileFoto = profImage.filter(waba => waba.name === name);
+    const profileFoto = profImage.filter(waba => waba.name === user);
     const dbImage = profileFoto.map(waba => waba.image)
+    
 
 
     // Get data from API
     useEffect(() => {
-        axios.get('http://localhost:3001/getData/' + name)
+        axios.get('http://localhost:3001/getData/' + user)
         .then(user => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
-    },[name])
+    },[user])
 
 
     const [value , setCurrentDate] = useState(new Date())
