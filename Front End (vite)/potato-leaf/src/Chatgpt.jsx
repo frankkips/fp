@@ -135,6 +135,10 @@ async function getChatGPTResponse(chatMessage){
                             <li><Link to="/">Home</Link></li>
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
+                            {
+                                user && 
+                                <li><Link to="/user/history">History</Link></li>
+                            }
                         </ul>
                     <Link to='/user/login' className='user-link'>
                         <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
