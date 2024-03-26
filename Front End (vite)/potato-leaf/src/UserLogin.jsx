@@ -12,6 +12,8 @@ function UserLogin(){
     const [name, setName] = useState()
     const [password, setPassword] = useState()
     const navigate = useNavigate()
+    const [majibu, setMajibu] = useState()
+    console.log(majibu)
 
 
     axios.defaults.withCredentials = true
@@ -21,6 +23,7 @@ function UserLogin(){
         axios.post('http://localhost:3001/login',{name, password})
         .then(result => {
             console.log(result)
+            setMajibu(result.data)
             if (result.data.Login === true){
 
                 navigate('/user', {state: {name: name}})
@@ -57,6 +60,7 @@ function UserLogin(){
                     <div className='result-div'>
                         <div className='login'>
                             <h2>Welcome Back</h2>
+                            <p>{majibu}</p>
                             <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
                             <button onClick={handleSubmit}>Login</button>

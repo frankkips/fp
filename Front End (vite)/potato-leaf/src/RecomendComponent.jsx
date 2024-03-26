@@ -27,6 +27,7 @@ const EarlyBlightList = () => (
     </ul>
 )
 
+
 const ReccomendComponent = ({ data }) => {
         const disease = data.class;
 
