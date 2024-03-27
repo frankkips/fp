@@ -13,6 +13,8 @@ const UserHistory =  () => {
     const [data,setData] = useState([])
     const [profImage, setProfImage] = useState([])
     const [user,setUser] = useState()
+    const [most, setMost] = useState()
+    console.log(most)
 
 
     // Get the profile image
@@ -57,6 +59,14 @@ const UserHistory =  () => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
+    },[user])
+
+    // Get the most common disease
+    useEffect(() => {
+        axios.get('http://localhost:3001/mostCommonClass/' + user)
+        .then(user => {
+            setMost(user.data.mostCommonClass)
+        })
     },[user])
 
 
@@ -119,7 +129,7 @@ const UserHistory =  () => {
                     <div className='hist-cont'>
                         <div className='common'>
                             <h2>Most common disease</h2>
-                            <h1>Early Blight Disease</h1>
+                            <h1>{most}</h1>
                         </div>
                     </div>
                     <div className='hist-cal'>

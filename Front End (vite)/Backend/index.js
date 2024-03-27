@@ -166,6 +166,20 @@ app.post('/register',(req,res) => {
     .catch(err => res.json(err))
 })
 
+// ================================MOST COMMON CLASS======================
+app.get('/mostCommonClass/:name', async (req, res) => {
+    const { name } = req.params;
+    const mostCommonResult = await UserModel.aggregate([
+            { $match: { name } },
+            { $unwind: "$data" }, // Unwind the data array
+            { $group: { _id: "$data.class", count: { $sum: 1 } } }, // Group by class and count occurrences
+            { $sort: { count: -1 } } // Sort in descending order of count
+        ])
+
+        const mostCommonClass = mostCommonResult.length > 0 ? mostCommonResult[0]._id : 'No data';
+        res.json({ mostCommonClass });
+});
+
 app.listen(3001, () => {
     console.log("Server is running")
 })
