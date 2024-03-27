@@ -49,13 +49,13 @@ function UserRegister(){
                 <div className='info-container'>
                     <div className='result-div'>
                         <div className='login'>
-                            <h2>Welcome Back</h2>
+                            <h2>Welcome</h2>
                             <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
                             <input type="email" placeholder='Email' onChange={(e)=> setEmail(e.target.value)}/>
                             <input type="text" placeholder='Location' onChange={(e)=> setLocation(e.target.value)}/>
                             <button onClick={handleSubmit}>Register</button>
-                            <p onClick={handleToggle}>dont have an account?Register</p>
+                            <p onClick={handleToggle}>Already have an account?Login</p>
                         </div>
                     </div>
                     

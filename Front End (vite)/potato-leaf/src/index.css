@@ -354,8 +354,8 @@
 .login h2{
   font-family: sans-serif;
   color: white;
-  margin-left: 90px;
   font-size: 35px;
+  text-align: center;
 }
 .login h1{
   font-family: sans-serif;
@@ -374,6 +374,10 @@
   margin-left: 95px;
   margin-top: 20px;
 
+}
+.login .majibu{
+  margin-left: 0px;
+  text-align: center;
 }
 .login input{
   padding-left: 10px;
@@ -530,7 +534,7 @@
 }
 .p-upload{
   cursor: pointer;
-  margin-top: 50px;
+  margin-top: 25px;
   width: 300px;
   height: 300px;
   background-color: rgb(255, 255, 255, 0.7);
@@ -564,5 +568,5 @@
 }
 
 .login .upbtn{
-  margin-top: 10px;
+  margin-top: 25px;
 }

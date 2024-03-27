@@ -105,7 +105,7 @@ function EditProfile() {
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
                     <Link to='/user/login' className='user-link'>
-                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
+                        <img src={dbImage == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                     </Link>
                 </div>
                 <div className='info-container'>

@@ -60,7 +60,7 @@ function UserLogin(){
                     <div className='result-div'>
                         <div className='login'>
                             <h2>Welcome Back</h2>
-                            <p>{majibu}</p>
+                            <p className='majibu'>{majibu}</p>
                             <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
                             <button onClick={handleSubmit}>Login</button>
