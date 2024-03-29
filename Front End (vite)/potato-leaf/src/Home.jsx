@@ -7,6 +7,7 @@ import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
 import ResultComponent from './ResultComponent'
 import { Link } from 'react-router-dom'
+import DropDown from './DropDown'
 
 function Home() {
     const [file, setFile] = useState();
@@ -16,6 +17,7 @@ function Home() {
     const [user, setUser] = useState()
     const [image, setImage] = useState()
     const [profImage, setProfImage] = useState([])
+    const [openMenu, setOpenMenu] = useState(false)
     
 
 
@@ -142,9 +144,7 @@ function Home() {
                                 <li><Link to="/user/history">History</Link></li>
                             }
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className='info-container'>
                 {!showResult ? (
@@ -180,6 +180,12 @@ function Home() {
                     </div>
                 </div>
             </div>
+            {
+                openMenu && (
+                    <DropDown/>
+                )
+            }
+            
         </div>
         </>
     );

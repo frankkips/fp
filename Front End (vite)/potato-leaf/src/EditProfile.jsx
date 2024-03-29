@@ -5,6 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
+import DropDown from './DropDown'
 
 // musunowakho
 
@@ -19,6 +20,7 @@ function EditProfile() {
     const [password, setPassword] = useState("")
     const [image, setImage] = useState("")
     const [dbImage, setDbImage] = useState("")
+    const [openMenu, setOpenMenu] = useState(false)
     console.log(dbImage)
 
     
@@ -104,9 +106,7 @@ function EditProfile() {
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={dbImage == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className='info-container'>
                     <div className='profile-div'>
@@ -152,7 +152,12 @@ function EditProfile() {
                     </div>
                     
                 </div>
-            
+                
+                {
+                openMenu && (
+                    <DropDown/>
+                )
+            }
             </div>
         </div>
         </>

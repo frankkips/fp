@@ -6,6 +6,7 @@ import Cells from './Cells'
 import { differenceInDays, endOfMonth, startOfMonth, sub, add, format } from 'date-fns';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
+import DropDown from './DropDown'
 
 
 
@@ -14,6 +15,7 @@ const UserHistory =  () => {
     const [profImage, setProfImage] = useState([])
     const [user,setUser] = useState()
     const [most, setMost] = useState()
+    const [openMenu, setOpenMenu] = useState(false)
     console.log(most)
 
 
@@ -102,9 +104,7 @@ const UserHistory =  () => {
                                 <li><Link to="/user/history">History</Link></li>
                             }
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className='hist-divider'>
                 <div className='hist-container'>
@@ -153,6 +153,12 @@ const UserHistory =  () => {
                 </div>
             </div>
             </div>
+
+            {
+                openMenu && (
+                    <DropDown/>
+                )
+            }
         </div>
         </>
     )

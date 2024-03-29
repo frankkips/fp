@@ -7,6 +7,7 @@ import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
 import axios from 'axios'
+import DropDown from './DropDown'
 
 const API_KEY = "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"
 
@@ -15,6 +16,7 @@ function Chatgpt(){
     const [typing , setTyping] = useState(false);
     const [messages, setMessages] = useState([])
     const [profImage, setProfImage] = useState([])
+    const [openMenu, setOpenMenu] = useState(false)
 
 
     // Get the profile image
@@ -30,6 +32,9 @@ function Chatgpt(){
     // Get the name of the user
     const profileFoto = profImage.filter(waba => waba.name === user);
     const dbImage = profileFoto.map(waba => waba.image)
+    console.log(profImage)
+
+    let messageToSend;
 
      // Update initial message when user state changes
     useEffect(() => {
@@ -41,7 +46,15 @@ function Chatgpt(){
                 }
             ]);
         }
-    }, [user]);
+        else{
+            setMessages([
+                {
+                    message: 'Hello, how can I help you today?',
+                    sender: 'ChatGPT'
+                }
+            ]);
+        }
+    }, [user, messageToSend]);
 
     axios.defaults.withCredentials = true
     
@@ -140,9 +153,7 @@ async function getChatGPTResponse(chatMessage){
                                 <li><Link to="/user/history">History</Link></li>
                             }
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className='info-container'>
                     <div className='result-div'>
@@ -157,7 +168,7 @@ async function getChatGPTResponse(chatMessage){
                                             return <Message key={i} model={message}/>
                                         })}
                                     </MessageList>
-                                    <MessageInput placeholder='Type your message' onSend={handleSend}/>
+                                    <MessageInput attachButton = {false} placeholder='Type your message' onSend={handleSend}/>
                                 </ChatContainer>
                             </MainContainer>
                         
@@ -169,7 +180,12 @@ async function getChatGPTResponse(chatMessage){
                     </div>
                     
                 </div>
-            
+                
+                {
+                openMenu && (
+                    <DropDown/>
+                )
+            }
             </div>
         </div>
         </>

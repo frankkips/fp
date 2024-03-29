@@ -3,8 +3,9 @@ import { useState, useEffect} from 'react'
 import tractorIcon from '/vector.png'
 import './App.css'
 import { Link } from 'react-router-dom'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
+import DropDown from './DropDown'
 
 
 
@@ -12,9 +13,27 @@ function UserProfile() {
     const [data,setData] = useState([])
     const [waba,setWaba] = useState([])
     const navigate = useNavigate()
-    const location = useLocation()
-    const {name} = location.state
-    // console.log(waba.length)
+    const [name, setName] = useState()
+    const [openMenu, setOpenMenu] = useState(false)
+
+    // Get User Name from the API
+    axios.defaults.withCredentials = true
+    
+
+    useEffect(() => {
+        axios.get('http://localhost:3001/')
+        .then(res => {
+            if (res.data.valid === true){
+                setName(res.data.username)
+            }else{
+                setName(null)
+            }
+            
+        })
+        .catch(err => {
+            console.log(err)
+        })
+    }, [])
 
     // Get data from API
     useEffect(() => {
@@ -59,9 +78,7 @@ function UserProfile() {
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
 
 
@@ -91,6 +108,13 @@ function UserProfile() {
                 </div>
             
             </div>
+            
+                {
+                    openMenu && (
+                        <DropDown/>
+                    )
+                }
+            
         </div>
         </>
     );

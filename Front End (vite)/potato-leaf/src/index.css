@@ -570,3 +570,41 @@
 .login .upbtn{
   margin-top: 25px;
 }
+
+
+/* Drop Down Part */
+
+.dropdown {
+  background-color: rgba(255, 255, 255, 0.637);
+  border-radius: 10px;
+  /* border: rgb(2, 54, 15) 1px solid; */
+  position: absolute;
+  display: inline-block;
+  top: 150px;
+  right: 170px;
+}
+
+.dropdown ul{
+  margin-left: -25px;
+  margin-right: 10px;
+}
+.dropdown li{
+  list-style: none;
+  cursor: pointer;
+  font-size: 20px;
+  font-family: sans-serif;
+}
+/* add on hover effect */
+.dropdown li:hover{
+  background-color: #F9C05F;
+  color: white;
+}
+/* add a 45 deg square to act as arrow */
+.dropdown::after {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 35px;
+  border: 10px solid;
+  border-color: transparent transparent rgba(255, 255, 255, 0.637)   transparent;
+}

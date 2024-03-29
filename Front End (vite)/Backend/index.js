@@ -159,6 +159,18 @@ app.post('/login',(req,res) => {
         }
     })
 })
+// Logout endpoint
+app.post('/logout', (req, res) => {
+    // Clear session or token
+    req.session.destroy(err => {
+        if (err) {
+            console.log(err);
+            res.status(500).json("Failed to logout");
+        } else {
+            res.json({ message: "Logout successful" });
+        }
+    });
+});
 
 app.post('/register',(req,res) => {
     UserModel.create(req.body)

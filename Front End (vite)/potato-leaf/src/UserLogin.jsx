@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
+import DropDown from './DropDown'
 
 
 
@@ -13,6 +14,7 @@ function UserLogin(){
     const [password, setPassword] = useState()
     const navigate = useNavigate()
     const [majibu, setMajibu] = useState()
+    const [openMenu, setOpenMenu] = useState(false)
     console.log(majibu)
 
 
@@ -52,9 +54,7 @@ function UserLogin(){
                             <li><Link to="/chat">Chat</Link></li>
                             <li><Link to="/learn">Learn</Link></li>
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className='info-container'>
                     <div className='result-div'>
@@ -70,6 +70,11 @@ function UserLogin(){
                     
                 </div>
             
+                {
+                openMenu && (
+                    <DropDown/>
+                )
+            }
             </div>
         </div>
         </>

@@ -5,11 +5,13 @@ import tractorIcon from '/vector.png'
 import { Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
+import DropDown from './DropDown'
 
 
 function Learn() {
     const [user, setUser] = useState()
     const [profImage, setProfImage] = useState([])
+    const [openMenu, setOpenMenu] = useState(false)
 
 
     // Get the profile image
@@ -64,9 +66,7 @@ function Learn() {
                                 <li><Link to="/user/history">History</Link></li>
                             }
                         </ul>
-                    <Link to='/user/login' className='user-link'>
-                        <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                    </Link>
+                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className="learn-title">
                     <h1 className='learn-text'>Potato Leaf Diseases</h1>
@@ -106,7 +106,11 @@ function Learn() {
                 </div>
                 
                 
-            
+                {
+                openMenu && (
+                    <DropDown/>
+                )
+            }
             </div>
         </div>
         </>
