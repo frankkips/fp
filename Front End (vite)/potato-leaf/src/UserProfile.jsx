@@ -90,7 +90,9 @@ function UserProfile() {
                             <img src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={150} height={150} alt='logo'/>
                             </div>
 
-                            {user.map(user => (
+                            { 
+                            
+                            user.map(user => (
                                 <>
                                 <h1 className='profile-name'>{user.name}</h1>
                                 <p className='profile-info'>{user.email}</p>
