@@ -21,7 +21,7 @@ const ResultComponent = ({ data }) => {
         <>
         {showRecommendations ? (<ReccomendComponent data={data}/>
         ) : (
-            <div className='result-part'>
+        <div className='result-part'>
             <div className="text-div">
                 <h1 className='result-text'>{disease}</h1>
                 <button className='tips-btn' onClick= {handleButtonClick}>Suggestions</button>

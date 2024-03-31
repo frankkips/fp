@@ -8,6 +8,7 @@ import UserLogin from './UserLogin'
 import UserHistory from './UserHistory'
 import EditProfile from './EditProfile'
 import UserRegister from './UserRegister'
+import Result from './Result'
 
 
 function App() {
@@ -25,6 +26,10 @@ function App() {
   {
     path: '/learn',
     element: <Learn/>,
+  },
+  {
+    path: '/result',
+    element: <Result/>,
   },
   {
     path: '/user',

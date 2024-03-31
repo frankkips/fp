@@ -18,6 +18,7 @@ function Home() {
     const [image, setImage] = useState()
     const [profImage, setProfImage] = useState([])
     const [openMenu, setOpenMenu] = useState(false)
+    // const navigate = useNavigate()
     
 
 
@@ -61,7 +62,7 @@ function Home() {
     }
 
     const updatePic = async(data) => {
-        console.log(data)
+        // console.log(data)
         const formdata = new FormData()
         formdata.append('image', image)
         formdata.append('class', data.class)
@@ -106,8 +107,11 @@ function Home() {
 
 
         if (data !== null){ 
+            // navigate('/result', {state: {data: data}})
             setShowResult(true); // Update state to show the result content
             updatePic(data) // Update the database with the image
+            // console.log(data)
+
             }  
     }
 
@@ -147,6 +151,10 @@ function Home() {
                         <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
                 </div>
                 <div className='info-container'>
+                {/* <div className='message-btn'>
+                        <h1 className='text'>{user ? `Hello ${user} Upload or Drag your Potato leaf Image` : 'Upload or Drag your Potato leaf Image and will tell you if its healthy or not'}</h1>
+                        <button onClick={sendFile}>Check</button>
+                    </div> */}
                 {!showResult ? (
                     <div className='message-btn'>
                         <h1 className='text'>{user ? `Hello ${user} Upload or Drag your Potato leaf Image` : 'Upload or Drag your Potato leaf Image and will tell you if its healthy or not'}</h1>
