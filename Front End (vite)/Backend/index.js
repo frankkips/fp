@@ -172,11 +172,32 @@ app.post('/logout', (req, res) => {
     });
 });
 
-app.post('/register',(req,res) => {
-    UserModel.create(req.body)
-    .then(users => res.json(users))
-    .catch(err => res.json(err))
-})
+app.post('/register', (req, res) => {
+    // Check if username already exists
+    UserModel.findOne({ name: req.body.name })
+        .then(existingUser => {
+            if (existingUser) {
+                // Username already exists, return error
+                res.status(400).json({ error: 'Username already exists' });
+            } else {
+                // Username is available, create new user
+                UserModel.create(req.body)
+                    .then(newUser => res.json(newUser))
+                    .catch(err => res.status(500).json({ error: 'Failed to create user' }));
+            }
+        })
+        .catch(err => res.status(500).json({ error: 'Database error' }));
+});
+
+
+
+
+
+// app.post('/register',(req,res) => {
+//     UserModel.create(req.body)
+//     .then(users => res.json(users))
+//     .catch(err => res.json(err))
+// })
 
 // ================================MOST COMMON CLASS======================
 app.get('/mostCommonClass/:name', async (req, res) => {

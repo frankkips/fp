@@ -16,13 +16,28 @@ function UserRegister(){
     const [location, setLocation] = useState()
     const navigate = useNavigate()
     const [openMenu, setOpenMenu] = useState(false)
+    const [word, setWord] = useState()
+    // console.log(word)
 
     const handleSubmit = (e) => {
         e.preventDefault()
         axios.post('http://localhost:3001/register',{name, password, email, location})
-        .then(result => console.log(result))
-        navigate('/user/login')
-        .catch(err => console.log(err))
+        .then(result => {
+            console.log(result)
+            if (result.status == 400){
+                console.log("Wrong Username")
+            }else{
+                navigate('/user/login')
+            }
+        
+        })
+        
+        .catch(err => {
+            console.log(err)
+            setWord("Username Already Exist")
+            }
+        
+        )
     }
 
 
@@ -50,6 +65,7 @@ function UserRegister(){
                     <div className='result-div'>
                         <div className='login'>
                             <h2>Welcome</h2>
+                            <p>{word}</p>
                             <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
                             <input type="email" placeholder='Email' onChange={(e)=> setEmail(e.target.value)}/>

@@ -4,15 +4,15 @@
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
 import './App.css'
-import PropTypes from 'prop-types';
-import { Link, useLocation } from 'react-router-dom'
+// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom'
 
 
 
 function Result(){
-    const location = useLocation()
-    const data = location.state.data
-    console.log(data)
+    // const location = useLocation()
+    // const data = location.state.data
+    // console.log(data)
 
     const handleButtonClick = () => {
 
@@ -70,10 +70,10 @@ function Result(){
     )
 }
 
-Result.propTypes = {
-    data: PropTypes.shape({
-        class: PropTypes.string.isRequired,
-        confidence: PropTypes.number.isRequired,
-    }).isRequired,
-};
+// Result.propTypes = {
+//     data: PropTypes.shape({
+//         class: PropTypes.string.isRequired,
+//         confidence: PropTypes.number.isRequired,
+//     }).isRequired,
+// };
 export default Result;

@@ -53,7 +53,7 @@ const ReccomendComponent = ({ data }) => {
             return(
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
-                    <h1 className='recomend-text'>Sorry, no recommendations available for this results</h1>
+                    <h1 className='recomend-text'>Please visit our learn page to learn more about potato leaf disease</h1>
                     <a className='rec-btn' href="/">Home</a>
                 </div>
             )

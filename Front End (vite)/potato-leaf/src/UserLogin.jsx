@@ -15,7 +15,7 @@ function UserLogin(){
     const navigate = useNavigate()
     const [majibu, setMajibu] = useState()
     const [openMenu, setOpenMenu] = useState(false)
-    console.log(majibu)
+    // console.log(majibu)
 
 
     axios.defaults.withCredentials = true

@@ -35,6 +35,7 @@
   font-weight: bold;
 }
 .percent{
+  /* background-color: #096319; */
   margin-top: 30px;
   font-size: 96px;
   margin-left: 285px;
@@ -43,10 +44,13 @@
   font-weight: bold;
 }
 .confidence{
+  /* background-color: #096319; */
   color: white;
-  margin-left: 300px;
+  margin-left: 250px;
+  margin-right: 10px;
   font-size: 60px;
   font-weight: bold;
+  text-align: center;
 }
 .asured{
   /* background-color: blue; */
@@ -367,11 +371,13 @@
 
 }
 .login p{
+  /* background-color: #096319; */
   cursor: pointer;
   font-family: sans-serif;
   color: rgb(255, 194, 25);
   font-weight: bold;
-  margin-left: 95px;
+  text-align: center;
+  /* margin-left: 95px; */
   margin-top: 20px;
 
 }

@@ -33,10 +33,14 @@ function DropDown() {
     return (
     <div className='dropdown'>
         <ul>
-            <li><Link to="/user">Profile</Link></li>
-            <li><Link to="/user/login">Login</Link></li>
-            <li><Link to="/user/register">Register</Link></li>
-            <li onClick={handleLogout}><Link to="/user/login">Logout</Link></li>
+            {user &&
+                <li><Link to="/user">Profile</Link></li>}
+            {!user &&
+                <>
+                <li><Link to="/user/login">Login</Link></li>
+                <li><Link to="/user/register">Register</Link></li></>}
+            {user &&
+                <li onClick={handleLogout}><Link to="/user/login">Logout</Link></li>}
             {/* <li onClick={handleLogout}>Logout</li> */}
         </ul>
     </div>
