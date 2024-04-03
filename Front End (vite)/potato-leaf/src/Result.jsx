@@ -1,5 +1,6 @@
 // No longer need to use this file
 // Update - now using this file
+// Still on it
 
 import userIcon from '/user-icon.png'
 import tractorIcon from '/vector.png'
@@ -15,7 +16,7 @@ function Result(){
     // console.log(data)
 
     const handleButtonClick = () => {
-
+        <Result/>
     };
 
     // const disease = data.class;
