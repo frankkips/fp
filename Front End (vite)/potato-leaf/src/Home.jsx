@@ -63,10 +63,12 @@ function Home() {
 
     const updatePic = async(data) => {
         // console.log(data)
+        const currentDate = new Date().toISOString().split('T')[0]
         const formdata = new FormData()
         formdata.append('image', image)
         formdata.append('class', data.class)
         formdata.append('confidence', data.confidence)
+        formdata.append('date', currentDate)
         await axios.post(
             'http://localhost:3001/upload/' + user,
             formdata,

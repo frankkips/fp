@@ -74,13 +74,14 @@ app.post('/update-dp/:id',upload.single('image'), async(req,res) => {
 app.post('/upload/:name',upload.single('image'), async(req,res) => {
     const {name} = req.params
     const imageName = req.file.filename
-    const { class: disease, confidence } = req.body
+    const { class: disease, confidence, date } = req.body
     try{
 
         const newData = {
             class: disease,
             confidence,
-            image: imageName
+            image: imageName,
+            date: date
         };
 
 

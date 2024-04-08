@@ -116,7 +116,7 @@ const UserHistory =  () => {
                         <div>
                             <h1>{item.class}</h1>
                             <h2>{(parseFloat(item.confidence) * 100).toFixed(2)}%</h2>
-                            <p>27 Feb 2024</p>
+                            <p>{item.date}</p>
                         </div>
                         
                         </div>

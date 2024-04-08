@@ -9,7 +9,8 @@ const UserSchema = new mongoose.Schema({
     data:[{
         class: String,
         confidence: String,
-        image: String
+        image: String,
+        date: String
     }]
     
 })
