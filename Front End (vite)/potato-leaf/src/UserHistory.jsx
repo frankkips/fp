@@ -48,6 +48,8 @@ const UserHistory =  () => {
         })
     }, [])
 
+
+    
     // Get the name of the user
     const profileFoto = profImage.filter(waba => waba.name === user);
     const dbImage = profileFoto.map(waba => waba.image)
