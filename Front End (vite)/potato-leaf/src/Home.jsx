@@ -160,7 +160,7 @@ function Home() {
                 {!showResult ? (
                     <div className='message-btn'>
                         <h1 className='text'>{user ? `Hello ${user} Upload or Drag your Potato leaf Image` : 'Upload or Drag your Potato leaf Image and will tell you if its healthy or not'}</h1>
-                        <button onClick={sendFile}>Check</button>
+                        <button className='button-btn' onClick={sendFile}>Check</button>
                     </div>
                 ) : (
 

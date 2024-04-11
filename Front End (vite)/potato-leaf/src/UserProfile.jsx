@@ -99,13 +99,13 @@ function UserProfile() {
                                 <p className='profile-info'>{user.location}</p>
                                 </>
                             ))}
-                            <button onClick={clickProfile}>Edit Profile</button>
+                            <button className='button-btn' onClick={clickProfile}>Edit Profile</button>
                         </div>
                     </div>
                     <div className='scans'>
                         <h1 className='scans-count'>{waba.length}</h1>
                         <p className='scan-info'>Scans Done So Far</p>
-                        <button onClick={handleClick}>Your History</button>
+                        <button className='button-btn' onClick={handleClick}>Your History</button>
                     </div>
                 </div>
             

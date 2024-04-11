@@ -18,6 +18,14 @@
 }
 
 .tips-btn{
+  width: 250px;
+  height: 70px;
+  border-radius: 30px;
+  stroke: none;
+  border: none;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
   background-color: #096319;
 }
 .text-div{
@@ -574,6 +582,15 @@
 }
 
 .login .upbtn{
+  /* width: 250px; */
+  /* height: 70px; */
+  /* border-radius: 30px; */
+  stroke: none;
+  border: none;
+  background-color: #096319;
+  color: white;
+  font-size: 32px;
+  cursor: pointer;
   margin-top: 25px;
 }
 

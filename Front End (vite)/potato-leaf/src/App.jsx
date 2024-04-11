@@ -9,6 +9,7 @@ import UserHistory from './UserHistory'
 import EditProfile from './EditProfile'
 import UserRegister from './UserRegister'
 import Result from './Result'
+import Calenda from './Calenda'
 
 
 function App() {
@@ -46,6 +47,10 @@ function App() {
     {
       path: 'user/register',
       element: <UserRegister/>,
+    },
+    {
+      path: '/calenda',
+      element: <Calenda/>,
     },
     {
       path: 'user/edit-profile',

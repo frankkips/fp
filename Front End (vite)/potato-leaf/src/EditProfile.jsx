@@ -116,7 +116,7 @@ function EditProfile() {
                             <input type= "password" placeholder='Password' defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
                             <input type="email" placeholder='Email' defaultValue={email} onChange={(e) => setEmail(e.target.value)}/>
                             <input type="text" placeholder='Location' defaultValue={locate} onChange={(e) => setLocation(e.target.value)}/>
-                            <button onClick={updateData}>Update</button>
+                            <button className='button-btn' onClick={updateData}>Update</button>
                         </div>
                         <div className='login'>
                             <h2>Profile Picture</h2>
