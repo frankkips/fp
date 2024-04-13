@@ -70,7 +70,7 @@ function UserRegister(){
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
                             <input type="email" placeholder='Email' onChange={(e)=> setEmail(e.target.value)}/>
                             <input type="text" placeholder='Location' onChange={(e)=> setLocation(e.target.value)}/>
-                            <button onClick={handleSubmit}>Register</button>
+                            <button className='button-btn' onClick={handleSubmit}>Register</button>
                             <p onClick={handleToggle}>Already have an account?Login</p>
                         </div>
                     </div>

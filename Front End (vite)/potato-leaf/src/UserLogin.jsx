@@ -63,7 +63,7 @@ function UserLogin(){
                             <p className='majibu'>{majibu}</p>
                             <input type="text" placeholder='Username' onChange={(e)=> setName(e.target.value)}/>
                             <input type= "password" placeholder='Password' onChange={(e)=> setPassword(e.target.value)}/>
-                            <button onClick={handleSubmit}>Login</button>
+                            <button className='button-btn' onClick={handleSubmit}>Login</button>
                             <p onClick={handleToggle}>dont have an account?Register</p>
                         </div>
                     </div>
