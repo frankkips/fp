@@ -30,7 +30,7 @@ export default function BasicDateCalendar() {
                         <div className="text-div">
                         <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <div style={{ width: 300, height: 270 }}>
-                            <DateCalendar />
+                            <DateCalendar style = {{width: 300 , height: 300}} />
                         </div>
                         </LocalizationProvider>
                         </div>
