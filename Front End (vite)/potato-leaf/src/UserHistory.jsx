@@ -63,15 +63,20 @@ const UserHistory =  () => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
-    },[user])
 
-    // Get the most common disease
-    useEffect(() => {
         axios.get('http://localhost:3001/mostCommonClass/' + user)
         .then(user => {
             setMost(user.data.mostCommonClass)
         })
     },[user])
+
+    // Get the most common disease
+    // useEffect(() => {
+    //     axios.get('http://localhost:3001/mostCommonClass/' + user)
+    //     .then(user => {
+    //         setMost(user.data.mostCommonClass)
+    //     })
+    // },[user])
 
 
     const [value , setCurrentDate] = useState(new Date())

@@ -112,7 +112,7 @@ function EditProfile() {
                     <div className='profile-div'>
                         <div className='login'>
                             <h2>Profile Details</h2>
-                            <input type="text" placeholder='Username' defaultValue={name} onChange={(e) => setName(e.target.value)}/>
+                            <input type="text" placeholder='Username' defaultValue={name} onChange={(e) => setName(e.target.value)} disabled/>
                             <input type= "password" placeholder='Password' defaultValue={password} onChange={(e) => setPassword(e.target.value)}/>
                             <input type="email" placeholder='Email' defaultValue={email} onChange={(e) => setEmail(e.target.value)}/>
                             <input type="text" placeholder='Location' defaultValue={locate} onChange={(e) => setLocation(e.target.value)}/>
