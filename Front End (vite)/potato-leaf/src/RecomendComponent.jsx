@@ -18,10 +18,11 @@ const LateBlightList = () => (
 const EarlyBlightList = () => (
     <ul className='reco-list'>
                 <>
-                <li>Monitor weather conditions and apply fungicides during humid periods</li>
+                <li>Monitor weather conditions and apply fungicides during warm,humid weather</li>
                 <li>Remove infected plant material promptly to prevent spread</li>
                 <li>Apply fungicides containing copper or mancozeb at first signs of infection</li>
                 <li>Maintain a regular fungicide spray schedule during disease-prone periods.</li>
+                <li>Monitor the crops regularly by looking for small, dark brown spots on older leaves</li>
                 </>
                 
     </ul>
@@ -38,7 +39,7 @@ const ReccomendComponent = ({ data }) => {
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
                     <LateBlightList />
-                    <a className='rec-btn' href="/">Home</a>
+                    <a className='rec-btn' href="/">Clear</a>
                 </div>
             )
         } else if (disease === 'Early Blight') {
@@ -46,15 +47,15 @@ const ReccomendComponent = ({ data }) => {
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
                     <EarlyBlightList />
-                    <a className='rec-btn' href="/">Home</a>
+                    <a className='rec-btn' href="/">Clear</a>
                 </div>
             )
         } else {
             return(
                 <div className='recomend-part'>
                     <h1 className='recomend-text'>Reccomendations</h1>
-                    <h1 className='recomend-text'>Please visit our learn page to learn more about potato leaf disease</h1>
-                    <a className='rec-btn' href="/">Home</a>
+                    <h1 className='recomend-text'>Please visit our learn and chat page to learn more about potato leaf disease</h1>
+                    <a className='rec-btn' href="/">Clear</a>
                 </div>
             )
         }

@@ -135,7 +135,7 @@ const UserHistory =  () => {
                 <div className="cal-cont">
                     <div className='hist-cont'>
                         <div className='common'>
-                            <h2>Most common disease</h2>
+                            <h2>Most Common Result</h2>
                             <h1>{most}</h1>
                         </div>
                     </div>
