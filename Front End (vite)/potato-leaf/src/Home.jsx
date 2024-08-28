@@ -8,6 +8,7 @@ import axios from 'axios';
 import ResultComponent from './ResultComponent'
 import { Link } from 'react-router-dom'
 import DropDown from './DropDown'
+import { Analytics } from "@vercel/analytics/react"
 
 function Home() {
     const [file, setFile] = useState();
@@ -195,7 +196,7 @@ function Home() {
                     <DropDown/>
                 )
             }
-            
+            <Analytics />
         </div>
         </>
     );
