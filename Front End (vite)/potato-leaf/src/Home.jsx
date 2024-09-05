@@ -95,7 +95,7 @@ function Home() {
             
                 let res = await axios({
                     method: "post",
-                    url: 'http://192.168.3.62:8000/predict',
+                    url: 'https://4220-197-248-74-21.ngrok-free.app/predict',
                     data: formData,
                     });
                 if (res.status === 200) {
