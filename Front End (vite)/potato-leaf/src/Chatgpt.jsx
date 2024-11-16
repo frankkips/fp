@@ -1,13 +1,10 @@
 // import axios from 'axios'
 import { useState, useEffect } from 'react'
-import userIcon from '/user-icon.png'
-import tractorIcon from '/vector.png'
-import { Link } from 'react-router-dom'
 import './App.css'
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react'
 import axios from 'axios'
-import DropDown from './DropDown'
+import Header from './Header'
 
 const API_KEY = "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"
 
@@ -15,24 +12,6 @@ function Chatgpt(){
     const [user, setUser] = useState()
     const [typing , setTyping] = useState(false);
     const [messages, setMessages] = useState([])
-    const [profImage, setProfImage] = useState([])
-    const [openMenu, setOpenMenu] = useState(false)
-
-
-    // Get the profile image
-    useEffect(() => {
-        axios.get('http://localhost:3001/getProfile')
-        .then(user => {
-            setProfImage(user.data)
-            return
-        })
-        .catch(err => console.log(err))
-    },[])
-
-    // Get the name of the user
-    const profileFoto = profImage.filter(waba => waba.name === user);
-    const dbImage = profileFoto.map(waba => waba.image)
-    console.log(profImage)
 
     let messageToSend;
 
@@ -139,22 +118,7 @@ async function getChatGPTResponse(chatMessage){
         <>
         <div className='container'>
             <div className='centered-container'>
-                <div className='header'>
-                    <div className='logo-container'>
-                        <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
-                        <h1 className='logo'>Mkulima</h1>
-                    </div>
-                        <ul className='list'>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/chat">Chat</Link></li>
-                            <li><Link to="/learn">Learn</Link></li>
-                            {
-                                user && 
-                                <li><Link to="/user/history">History</Link></li>
-                            }
-                        </ul>
-                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                </div>
+                <Header/>
                 <div className='info-container'>
                     <div className='result-div'>
                         <div className='gpt-part'>
@@ -175,17 +139,9 @@ async function getChatGPTResponse(chatMessage){
                         </div>
                     </div>
                     <div className='leaf'>
-                        
 
                     </div>
-                    
                 </div>
-                
-                {
-                openMenu && (
-                    <DropDown/>
-                )
-            }
             </div>
         </div>
         </>

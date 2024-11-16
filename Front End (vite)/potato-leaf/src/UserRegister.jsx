@@ -1,12 +1,9 @@
 // Code for UserRegister page
-import userIcon from '/user-icon.png'
-import tractorIcon from '/vector.png'
 import './App.css'
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import DropDown from './DropDown'
+import Header from './Header'
 
 
 function UserRegister(){
@@ -15,9 +12,7 @@ function UserRegister(){
     const [email, setEmail] = useState()
     const [location, setLocation] = useState()
     const navigate = useNavigate()
-    const [openMenu, setOpenMenu] = useState(false)
     const [word, setWord] = useState()
-    // console.log(word)
 
     const handleSubmit = (e) => {
         e.preventDefault()
@@ -49,18 +44,7 @@ function UserRegister(){
         <>
             <div className='container'>
             <div className='centered-container'>
-                <div className='header'>
-                    <div className='logo-container'>
-                        <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
-                        <h1 className='logo'>Mkulima</h1>
-                    </div>
-                        <ul className='list'>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/chat">Chat</Link></li>
-                            <li><Link to="/learn">Learn</Link></li>
-                        </ul>
-                        <img onClick={() => setOpenMenu((prev) => !prev)} src={userIcon} width={50} height={50} alt='logo' className='user-icon'/>
-                </div>
+                <Header/>
                 <div className='info-container'>
                     <div className='result-div'>
                         <div className='login'>
@@ -78,11 +62,6 @@ function UserRegister(){
                 </div>
             
             </div>
-            {
-                openMenu && (
-                    <DropDown/>
-                )
-            }
         </div>
         </>
     )

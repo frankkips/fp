@@ -1,33 +1,16 @@
-import userIcon from '/user-icon.png'
-import tractorIcon from '/vector.png'
 import './App.css'
-import { Link } from 'react-router-dom'
 import Cells from './Cells'
 import { differenceInDays, endOfMonth, startOfMonth, sub, add, format } from 'date-fns';
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import DropDown from './DropDown'
-
-
+import Header from './Header'
 
 const UserHistory =  () => {
     const [data,setData] = useState([])
-    const [profImage, setProfImage] = useState([])
     const [user,setUser] = useState()
     const [most, setMost] = useState()
-    const [openMenu, setOpenMenu] = useState(false)
     console.log(most)
 
-
-    // Get the profile image
-    useEffect(() => {
-        axios.get('http://localhost:3001/getProfile')
-        .then(user => {
-            setProfImage(user.data)
-            return
-        })
-        .catch(err => console.log(err))
-    },[])
 
     // Maintain the name
     axios.defaults.withCredentials = true
@@ -49,13 +32,6 @@ const UserHistory =  () => {
     }, [])
 
 
-    
-    // Get the name of the user
-    const profileFoto = profImage.filter(waba => waba.name === user);
-    const dbImage = profileFoto.map(waba => waba.image)
-    
-
-
     // Get data from API
     useEffect(() => {
         axios.get('http://localhost:3001/getData/' + user)
@@ -69,15 +45,6 @@ const UserHistory =  () => {
             setMost(user.data.mostCommonClass)
         })
     },[user])
-
-    // Get the most common disease
-    // useEffect(() => {
-    //     axios.get('http://localhost:3001/mostCommonClass/' + user)
-    //     .then(user => {
-    //         setMost(user.data.mostCommonClass)
-    //     })
-    // },[user])
-
 
     const [value , setCurrentDate] = useState(new Date())
     const startDate = startOfMonth(value)
@@ -97,22 +64,7 @@ const UserHistory =  () => {
         <>
             <div className='container'>
             <div className='centered-container'>
-                <div className='header'>
-                    <div className='logo-container'>
-                        <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
-                        <h1 className='logo'>Mkulima</h1>
-                    </div>
-                        <ul className='list'>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/chat">Chat</Link></li>
-                            <li><Link to="/learn">Learn</Link></li>
-                            {
-                                user && 
-                                <li><Link to="/user/history">History</Link></li>
-                            }
-                        </ul>
-                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                </div>
+                <Header/>
                 <div className='hist-divider'>
                 <div className='hist-container'>
                     
@@ -160,12 +112,6 @@ const UserHistory =  () => {
                 </div>
             </div>
             </div>
-
-            {
-                openMenu && (
-                    <DropDown/>
-                )
-            }
         </div>
         </>
     )

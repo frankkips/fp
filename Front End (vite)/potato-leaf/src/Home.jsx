@@ -1,14 +1,11 @@
-import userIcon from '/user-icon.png'
-import tractorIcon from '/vector.png'
 import './App.css'
 import { useState, useEffect } from 'react'
 import {useCallback}  from 'react'
 import {useDropzone} from 'react-dropzone'
 import axios from 'axios';
 import ResultComponent from './ResultComponent'
-import { Link } from 'react-router-dom'
-import DropDown from './DropDown'
 import { Analytics } from "@vercel/analytics/react"
+import Header from './Header'
 
 function Home() {
     const [file, setFile] = useState();
@@ -17,10 +14,6 @@ function Home() {
     const [showResult, setShowResult] = useState(false);
     const [user, setUser] = useState()
     const [image, setImage] = useState()
-    const [profImage, setProfImage] = useState([])
-    const [openMenu, setOpenMenu] = useState(false)
-    // const navigate = useNavigate()
-    
 
 
 // Maintain the name
@@ -42,19 +35,6 @@ function Home() {
         })
     }, [])
 
-    // Get the profile image
-    useEffect(() => {
-        axios.get('http://localhost:3001/getProfile')
-        .then(user => {
-            setProfImage(user.data)
-            return
-        })
-        .catch(err => console.log(err))
-    },[])
-
-    // Get the name of the user
-    const profileFoto = profImage.filter(waba => waba.name === user);
-    const dbImage = profileFoto.map(waba => waba.image)
 
     // Convert Image to Base64 - not really!
     function convertToBase(e){
@@ -95,7 +75,7 @@ function Home() {
             
                 let res = await axios({
                     method: "post",
-                    url: 'https://4220-197-248-74-21.ngrok-free.app/predict',
+                    url: 'http://localhost:8000/predict',
                     data: formData,
                     });
                 if (res.status === 200) {
@@ -114,11 +94,8 @@ function Home() {
             setShowResult(true); // Update state to show the result content
             updatePic(data) // Update the database with the image
             // console.log(data)
-
             }  
     }
-
-
 
 
 // Drag and Drop Features
@@ -136,28 +113,8 @@ function Home() {
         <>
         <div className='container'>
             <div className='centered-container'>
-                <div className='header'>
-                    <div className='logo-container'>
-                        <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
-                        <h1 className='logo'>Mkulima</h1>
-                    
-                    </div>
-                        <ul className='list'>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/chat">Chat</Link></li>
-                            <li><Link to="/learn">Learn</Link></li>
-                            {
-                                user && 
-                                <li><Link to="/user/history">History</Link></li>
-                            }
-                        </ul>
-                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage[0] == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                </div>
+                <Header/>
                 <div className='info-container'>
-                {/* <div className='message-btn'>
-                        <h1 className='text'>{user ? `Hello ${user} Upload or Drag your Potato leaf Image` : 'Upload or Drag your Potato leaf Image and will tell you if its healthy or not'}</h1>
-                        <button onClick={sendFile}>Check</button>
-                    </div> */}
                 {!showResult ? (
                     <div className='message-btn'>
                         <h1 className='text'>{user ? `Hello ${user} Upload or Drag your Potato leaf Image` : 'Upload or Drag your Potato leaf Image and will tell you if its healthy or not'}</h1>
@@ -191,11 +148,6 @@ function Home() {
                     </div>
                 </div>
             </div>
-            {
-                openMenu && (
-                    <DropDown/>
-                )
-            }
             <Analytics />
         </div>
         </>

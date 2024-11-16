@@ -1,11 +1,9 @@
-import userIcon from '/user-icon.png'
-import tractorIcon from '/vector.png'
 import './App.css'
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import {useDropzone} from 'react-dropzone'
 import { useCallback, useEffect, useState } from 'react'
 import axios from 'axios'
-import DropDown from './DropDown'
+import Header from './Header'
 
 // musunowakho
 
@@ -20,7 +18,6 @@ function EditProfile() {
     const [password, setPassword] = useState("")
     const [image, setImage] = useState("")
     const [dbImage, setDbImage] = useState("")
-    const [openMenu, setOpenMenu] = useState(false)
     console.log(dbImage)
 
     
@@ -96,18 +93,7 @@ function EditProfile() {
         <>
         <div className='container'>
             <div className='centered-container'>
-                <div className='header'>
-                    <div className='logo-container'>
-                        <img src={tractorIcon} width= {47} height={39}alt='logo' className='logo-img'/>
-                        <h1 className='logo'>Mkulima</h1>
-                    </div>
-                        <ul className='list'>
-                            <li><Link to="/">Home</Link></li>
-                            <li><Link to="/chat">Chat</Link></li>
-                            <li><Link to="/learn">Learn</Link></li>
-                        </ul>
-                        <img onClick={() => setOpenMenu((prev) => !prev)} src={dbImage == undefined ? (userIcon) : (`/images/${dbImage}`)} width={50} height={50} alt='logo' className='user-icon'/>
-                </div>
+                <Header/>
                 <div className='info-container'>
                     <div className='profile-div'>
                         <div className='login'>
@@ -152,12 +138,6 @@ function EditProfile() {
                     </div>
                     
                 </div>
-                
-                {
-                openMenu && (
-                    <DropDown/>
-                )
-            }
             </div>
         </div>
         </>
