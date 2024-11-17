@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import './App.css'
+
+
 
 function DropDown() {
     const [user, setUser] = useState(null);
@@ -8,7 +11,7 @@ function DropDown() {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://localhost:3001/')
+        axios.get('http://10.42.0.1:3001/')
             .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username);
@@ -22,7 +25,7 @@ function DropDown() {
     }, [user]);
 
     const handleLogout = () => {
-        axios.post('http://localhost:3001/logout')
+        axios.post('http://10.42.0.1:3001/logout')
             .then(() =>{
             setUser(null); // Clear user state on successful logout
             })
@@ -33,6 +36,10 @@ function DropDown() {
     return (
     <div className='dropdown'>
         <ul>
+            <li className='mobmenu'><Link to="/">Home</Link></li>
+            <li className='mobmenu'><Link to="/chat">Chat</Link></li>
+            <li className='mobmenu'><Link to="/learn">Learn</Link></li>
+            <li className='mobmenu'><Link to="/user/history">History</Link></li>
             {user &&
                 <li><Link to="/user">Profile</Link></li>}
             {!user &&
@@ -41,7 +48,6 @@ function DropDown() {
                 <li><Link to="/user/register">Register</Link></li></>}
             {user &&
                 <li onClick={handleLogout}><Link to="/user/login">Logout</Link></li>}
-            {/* <li onClick={handleLogout}>Logout</li> */}
         </ul>
     </div>
     );

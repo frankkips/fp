@@ -21,7 +21,7 @@ function Home() {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://localhost:3001/')
+        axios.get('http://10.42.0.1:3001/')
         .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username)
@@ -51,7 +51,7 @@ function Home() {
         formdata.append('confidence', data.confidence)
         formdata.append('date', currentDate)
         await axios.post(
-            'http://localhost:3001/upload/' + user,
+            'http://10.42.0.1:3001/upload/' + user,
             formdata,
             {
                 headers: {
@@ -75,7 +75,7 @@ function Home() {
             
                 let res = await axios({
                     method: "post",
-                    url: 'http://localhost:8000/predict',
+                    url: 'http://10.42.0.1:8000/predict',
                     data: formData,
                     });
                 if (res.status === 200) {
