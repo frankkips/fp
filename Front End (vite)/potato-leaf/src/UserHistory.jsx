@@ -17,7 +17,7 @@ const UserHistory =  () => {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://10.42.0.1:3001/')
+        axios.get('http://localhost:3001/')
         .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username)
@@ -34,13 +34,13 @@ const UserHistory =  () => {
 
     // Get data from API
     useEffect(() => {
-        axios.get('http://10.42.0.1:3001/getData/' + user)
+        axios.get('http://localhost:3001/getData/' + user)
         .then(user => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
 
-        axios.get('http://10.42.0.1:3001/mostCommonClass/' + user)
+        axios.get('http://localhost:3001/mostCommonClass/' + user)
         .then(user => {
             setMost(user.data.mostCommonClass)
         })

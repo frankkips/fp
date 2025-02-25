@@ -14,7 +14,7 @@ function UserLogin(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://10.42.0.1:3001/login',{name, password})
+        axios.post('http://localhost:3001/login',{name, password})
         .then(result => {
             console.log(result)
             setMajibu(result.data)

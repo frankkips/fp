@@ -16,7 +16,7 @@ function Header(){
 
         // Check Session for userlogin
         useEffect(() => {
-            axios.get('http://10.42.0.1:3001/')
+            axios.get('http://localhost:3001/')
             .then(res => {
                 if (res.data.valid === true){
                     setUser(res.data.username)
@@ -33,7 +33,7 @@ function Header(){
 
             // Get the profile image
     useEffect(() => {
-        axios.get('http://10.42.0.1:3001/getProfile')
+        axios.get('http://localhost:3001/getProfile')
         .then(user => {
             setProfImage(user.data)
             return
