@@ -17,7 +17,7 @@ function UserProfile() {
     
 
     useEffect(() => {
-        axios.get('http://https://kips-mongodb.onrender.com/')
+        axios.get('https://kips-mongodb.onrender.com/')
         .then(res => {
             if (res.data.valid === true){
                 setName(res.data.username)
@@ -33,7 +33,7 @@ function UserProfile() {
 
     // Get data from API
     useEffect(() => {
-        axios.get('http://https://kips-mongodb.onrender.com/getData/' + name)
+        axios.get('https://kips-mongodb.onrender.com/getData/' + name)
         .then(user => {
             setWaba(user.data.data)
         })
@@ -52,7 +52,7 @@ function UserProfile() {
     };
 
     useEffect(() => {
-        axios.get('http://https://kips-mongodb.onrender.com/getProfile')
+        axios.get('https://kips-mongodb.onrender.com/getProfile')
         .then(user => {
             setData(user.data)
         })

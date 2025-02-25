@@ -51,7 +51,7 @@ function Home() {
         formdata.append('confidence', data.confidence)
         formdata.append('date', currentDate)
         await axios.post(
-            'http://https://kips-mongodb.onrender.com/upload/' + user,
+            'https://kips-mongodb.onrender.com/upload/' + user,
             formdata,
             {
                 headers: {

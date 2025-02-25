@@ -16,7 +16,7 @@ function Header(){
 
         // Check Session for userlogin
         useEffect(() => {
-            axios.get('http://https://kips-mongodb.onrender.com/')
+            axios.get('https://kips-mongodb.onrender.com/')
             .then(res => {
                 if (res.data.valid === true){
                     setUser(res.data.username)
@@ -33,7 +33,7 @@ function Header(){
 
             // Get the profile image
     useEffect(() => {
-        axios.get('http://https://kips-mongodb.onrender.com/getProfile')
+        axios.get('https://kips-mongodb.onrender.com/getProfile')
         .then(user => {
             setProfImage(user.data)
             return

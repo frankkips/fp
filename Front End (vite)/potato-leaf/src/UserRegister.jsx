@@ -16,7 +16,7 @@ function UserRegister(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://https://kips-mongodb.onrender.com/register',{name, password, email, location})
+        axios.post('https://kips-mongodb.onrender.com/register',{name, password, email, location})
         .then(result => {
             console.log(result)
             if (result.status == 400){

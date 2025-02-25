@@ -17,7 +17,7 @@ const UserHistory =  () => {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://https://kips-mongodb.onrender.com/')
+        axios.get('https://kips-mongodb.onrender.com/')
         .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username)
