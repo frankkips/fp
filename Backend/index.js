@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors(
     {
-        origin: "https://localhost:5173",
+        origin: "http://localhost:5173",
         methods: ["GET","POST"],
         credentials: true
     }
@@ -20,9 +20,9 @@ app.use(bodyParser.json())
 app.use(session({
     secret: "secret",
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     cookie: {
-        secure: true,
+        secure: false,
         maxAge: 1000 * 60 * 60 * 24
     }
 }))
