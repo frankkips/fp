@@ -10,7 +10,7 @@ const app = express()
 app.use(express.json())
 app.use(cors(
     {
-        origin: "https://potato-det.vercel.app",
+        origin: "*",
         methods: ["GET","POST"],
         credentials: true
     }
