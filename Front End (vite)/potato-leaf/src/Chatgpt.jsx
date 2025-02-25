@@ -39,7 +39,7 @@ function Chatgpt(){
     
 
     useEffect(() => {
-        axios.get('http://localhost:3001/')
+        axios.get('https://kips-mongodb.onrender.com/')
         .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username)
