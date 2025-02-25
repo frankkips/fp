@@ -34,13 +34,13 @@ const UserHistory =  () => {
 
     // Get data from API
     useEffect(() => {
-        axios.get('http://https://kips-mongodb.onrender.com/getData/' + user)
+        axios.get('https://kips-mongodb.onrender.com/getData/' + user)
         .then(user => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
 
-        axios.get('http://https://kips-mongodb.onrender.com/mostCommonClass/' + user)
+        axios.get('https://kips-mongodb.onrender.com/mostCommonClass/' + user)
         .then(user => {
             setMost(user.data.mostCommonClass)
         })
