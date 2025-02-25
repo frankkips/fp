@@ -21,7 +21,7 @@ function Home() {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://localhost:3001/')
+        axios.get('http://https://kips-mongodb.onrender.com/')
         .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username)
@@ -51,7 +51,7 @@ function Home() {
         formdata.append('confidence', data.confidence)
         formdata.append('date', currentDate)
         await axios.post(
-            'http://localhost:3001/upload/' + user,
+            'http://https://kips-mongodb.onrender.com/upload/' + user,
             formdata,
             {
                 headers: {

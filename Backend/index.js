@@ -31,10 +31,7 @@ app.use(session({
 // mongoose.connect('mongodb://localhost:2717/user')
 const MONGO_URI = "mongodb+srv://frankkips:p2xzr8xjAx7Ar5M@cluster0.pjbj5.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
 
-mongoose.connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-})
+mongoose.connect(MONGO_URI)
 
 // Connection event handlers
 mongoose.connection.on('connected', () => {

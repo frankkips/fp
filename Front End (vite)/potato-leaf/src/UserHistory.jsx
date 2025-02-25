@@ -17,7 +17,7 @@ const UserHistory =  () => {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://localhost:3001/')
+        axios.get('http://https://kips-mongodb.onrender.com/')
         .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username)
@@ -34,13 +34,13 @@ const UserHistory =  () => {
 
     // Get data from API
     useEffect(() => {
-        axios.get('http://localhost:3001/getData/' + user)
+        axios.get('http://https://kips-mongodb.onrender.com/getData/' + user)
         .then(user => {
             setData(user.data.data)
         })
         .catch(err => console.log(err))
 
-        axios.get('http://localhost:3001/mostCommonClass/' + user)
+        axios.get('http://https://kips-mongodb.onrender.com/mostCommonClass/' + user)
         .then(user => {
             setMost(user.data.mostCommonClass)
         })

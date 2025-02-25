@@ -26,7 +26,7 @@ function EditProfile() {
         const id = location.state.user[0]._id
         
 
-        fetch('http://localhost:3001/updateProfile',{
+        fetch('http://https://kips-mongodb.onrender.com/updateProfile',{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -54,7 +54,7 @@ function EditProfile() {
         const id = location.state.user[0]._id
         
         await axios.post(
-            'http://localhost:3001/update-dp/' + id,
+            'http://https://kips-mongodb.onrender.com/update-dp/' + id,
             formdata,
             {
                 headers: {

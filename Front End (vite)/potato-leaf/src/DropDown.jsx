@@ -11,7 +11,7 @@ function DropDown() {
 
     // Check Session for userlogin
     useEffect(() => {
-        axios.get('http://localhost:3001/')
+        axios.get('http://https://kips-mongodb.onrender.com/')
             .then(res => {
             if (res.data.valid === true){
                 setUser(res.data.username);
@@ -25,7 +25,7 @@ function DropDown() {
     }, [user]);
 
     const handleLogout = () => {
-        axios.post('http://localhost:3001/logout')
+        axios.post('http://https://kips-mongodb.onrender.com/logout')
             .then(() =>{
             setUser(null); // Clear user state on successful logout
             })

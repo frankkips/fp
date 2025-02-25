@@ -14,7 +14,7 @@ function UserLogin(){
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.post('http://localhost:3001/login',{name, password})
+        axios.post('http://https://kips-mongodb.onrender.com/login',{name, password})
         .then(result => {
             console.log(result)
             setMajibu(result.data)
